@@ -14,7 +14,6 @@ const chunk = require(`lodash/chunk`)
 exports.createPages = async gatsbyUtilities => {
   // Query our posts from the GraphQL server
   const posts = await getNodes(gatsbyUtilities)
-  console.log('posts', posts)
 
   // If there are no posts in WordPress, don't do anything
   if (!posts.length) {
