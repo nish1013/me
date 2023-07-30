@@ -6,6 +6,7 @@ interface Post {
     id: string;
     title: string;
     excerpt: string;
+    uri: string;
 }
 
 interface PostsProps {
@@ -15,7 +16,7 @@ const Posts: React.FC<PostsProps> = () => {
     return (<div className="">
         {
             posts.map((p: Post) => {
-                return <Post title={p.title} />
+                return <Post title={p.title} uri={p.uri} />
             })
         }
     </div>)
@@ -28,6 +29,7 @@ export const query = graphql`
             id
             title
             excerpt
+            uri
         }
     }
 }`;
