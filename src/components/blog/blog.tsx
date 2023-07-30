@@ -1,5 +1,8 @@
 import React from "react"
 import Posts from "./posts"
 export default function Blog() {
-    return <div><Posts/></div>
+    return (<div className="flex flex-col items-center py-10 mx-10">
+        <h1 className="text-4xl font-black">Blog Posts</h1>
+        <Posts />
+    </div>)
 }
