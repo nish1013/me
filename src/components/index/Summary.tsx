@@ -1,5 +1,5 @@
 import React from "react"
-const clazz = "font-sans text-justify";
+const clazz = "font-sans text-justify my-5";
 export default function Summary() {
   return (
     <div  className={clazz}>

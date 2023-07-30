@@ -5,7 +5,7 @@ import ProfileImage from "./ProfileImage"
 import Summary from "./Summary"
 export default function Index() {
   return (
-    <div className="flex flex-col items-center py-10">
+    <div className="flex flex-col items-center py-10 mx-10">
         <ProfileImage/>
         <Summary/>
         {
