@@ -16,4 +16,8 @@ export const mainLinks = [
         url: 'https://codesandbox.io/u/nish1013',
         text: 'Codesandbox'
     },
+    {
+        url: '/blog',
+        text: 'Blog'
+    },
 ]
