@@ -16,6 +16,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@wordpress/block-library": "^8.15.0",
     "autoprefixer": "^10.4.14",
     "gatsby": "^5.11.0",
     "gatsby-plugin-image": "^3.11.0",
@@ -23,6 +24,7 @@
     "gatsby-plugin-sharp": "^5.11.0",
     "gatsby-source-wordpress": "^7.11.0",
     "gatsby-transformer-sharp": "^5.11.0",
+    "html-react-parser": "^4.2.0",
     "postcss": "^8.4.27",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
