@@ -7,9 +7,9 @@ import parse from "html-react-parser"
 import "@wordpress/block-library/build-style/style.css"
 import "@wordpress/block-library/build-style/theme.css"
 
-//import Bio from "../components/bio"
+import Bio from "../components/bio/Bio"
 import Layout from "../components/layout/Layout"
-// import Seo from "../components/seo"
+import Seo from "../components/seo/Seo"
 
 const BlogPostTemplate = ({ data: { previous, next, post } }) => {
   const featuredImage = {
@@ -42,6 +42,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
         <hr />
 
         <footer>
+            <Bio/>
         </footer>
       </article>
 
@@ -77,7 +78,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
 }
 
 export const Head = ({ data: { post } }) => (
-  <div></div>
+  <Seo title={post.title} description={post.excerpt} />
 )
 
 export default BlogPostTemplate
