@@ -63,6 +63,11 @@ const PageTemplate = ({ data: { previous, next, post } }) => {
               </Link>
             )}
           </li>
+          <li>
+            <Link to='/' rel="home">
+                ⌂ Home
+              </Link>
+          </li>
 
           <li>
             {next && (

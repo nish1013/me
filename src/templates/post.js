@@ -63,7 +63,11 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
               </Link>
             )}
           </li>
-
+          <li>
+              <Link to='/' rel="home">
+                ⌂ Home
+              </Link>
+          </li>
           <li>
             {next && (
               <Link to={next.uri} rel="next">
