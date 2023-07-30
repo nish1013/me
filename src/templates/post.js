@@ -77,7 +77,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
 }
 
 export const Head = ({ data: { post } }) => (
-  <div>test</div>
+  <div></div>
 )
 
 export default BlogPostTemplate
