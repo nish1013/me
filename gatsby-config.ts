@@ -12,7 +12,18 @@ const config: GatsbyConfig = {
   // If you use VSCode you can also use the GraphQL plugin
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
-  plugins: [{
+  plugins: [ {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+            },
+          },
+        ],
+      },
+    },{
     resolve: 'gatsby-source-wordpress',
     options: {
       "url": process.env.CMS_URL

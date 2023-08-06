@@ -42,7 +42,7 @@ const PageTemplate = ({ data: { previous, next, post } }) => {
         <hr />
 
         <footer>
-            <Bio/>
+            {/* <Bio/> */}
         </footer>
       </article>
 

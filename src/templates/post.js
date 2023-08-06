@@ -7,6 +7,8 @@ import parse from "html-react-parser"
 import "@wordpress/block-library/build-style/style.css"
 import "@wordpress/block-library/build-style/theme.css"
 
+import "../styles/blog.css"
+
 import Bio from "../components/bio/Bio"
 import Layout from "../components/layout/Layout"
 import Seo from "../components/seo/Seo"
@@ -42,7 +44,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
         <hr />
 
         <footer>
-            <Bio/>
+            {/* <Bio/> */}
         </footer>
       </article>
 
