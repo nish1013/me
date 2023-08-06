@@ -3,3 +3,7 @@ h1 {
     font-weight: 600;
     text-align: center;
 }
+
+p {
+    line-height: 1.7em
+}
