@@ -1,0 +1,9 @@
+.btnx-github {
+    display: flex !important;
+    flex-direction: column;
+}
+
+.btnx-github > a {
+    width: fit-content;
+    align-self: center
+}
