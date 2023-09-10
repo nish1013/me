@@ -17,7 +17,11 @@ export const mainLinks = [
         text: 'Codesandbox'
     },
     {
+        url: 'https://youtube.com/@nish1013?si=Z26HkrcIES8YXEaz',
+        text: 'YouTube'
+    },
+    {
         url: '/blog',
         text: 'Blog'
-    },
+    }
 ]
