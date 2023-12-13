@@ -5,6 +5,10 @@ export interface MainLink {
 
 export const mainLinks = [
     {
+        url: '/blog',
+        text: 'Blog'
+    },
+    {
      url: 'https://linkedin.com/in/nish1013',
      text: 'Linkedin'
     },
@@ -19,9 +23,5 @@ export const mainLinks = [
     {
         url: 'https://youtube.com/@nish1013?si=Z26HkrcIES8YXEaz',
         text: 'YouTube'
-    },
-    {
-        url: '/blog',
-        text: 'Blog'
     }
 ]
