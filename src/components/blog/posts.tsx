@@ -23,15 +23,33 @@ const Posts: React.FC<PostsProps> = () => {
 }
 
 export const query = graphql`
-{
-    allWpPost {
-        nodes {
-            id
-            title
-            excerpt
-            uri
+    query {
+        allWpPost(
+            filter: { 
+                tags: { 
+                    nodes: { 
+                        elemMatch: { 
+                            name: { in: ["Tech"] }
+                        } 
+                    } 
+                } 
+            }
+            sort: { fields: [date], order: DESC }
+        ) {
+            nodes {
+                id
+                title
+                excerpt
+                uri
+                date
+                tags {
+                    nodes {
+                        id
+                        name
+                    }
+                }
+            }
         }
-    }
-}`;
+    }`;
 
 export default Posts;
