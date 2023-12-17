@@ -23,5 +23,9 @@ export const mainLinks = [
     {
         url: 'https://youtube.com/@nish1013?si=Z26HkrcIES8YXEaz',
         text: 'YouTube'
-    }
+    },
+    {
+        url: '/journey',
+        text: 'Journey'
+    },
 ]

@@ -29,12 +29,12 @@ export const query = graphql`
                 tags: { 
                     nodes: { 
                         elemMatch: { 
-                            name: { in: ["Tech"] }
+                            name: { in: ["Journey"] }
                         } 
                     } 
                 } 
             }
-            sort: { fields: [date], order: DESC }
+            sort: { fields: [date], order: ASC }
         ) {
             nodes {
                 id
