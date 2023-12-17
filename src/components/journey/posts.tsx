@@ -34,7 +34,7 @@ export const query = graphql`
                     } 
                 } 
             }
-            sort: { fields: [date], order: DESC }
+            sort: { fields: [date], order: ASC }
         ) {
             nodes {
                 id
