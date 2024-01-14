@@ -1,34 +1,48 @@
-import type { GatsbyConfig } from "gatsby";
-require("dotenv").config({
+import type { GatsbyConfig } from 'gatsby';
+require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
-})
+});
 
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Nishan Satharasinghe`,
-    siteUrl: `https://www.yourdomain.tld`
+    siteUrl: `https://satharasinghe.com`,
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
-  plugins: [ {
+  plugins: [
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
           {
             resolve: `gatsby-remark-prismjs`,
-            options: {
-            },
+            options: {},
           },
         ],
       },
-    },{
-    resolve: 'gatsby-source-wordpress',
-    options: {
-      "url": process.env.CMS_URL
-    }
-  }, "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", "gatsby-plugin-postcss"]
+    },
+    {
+      resolve: 'gatsby-source-wordpress',
+      options: {
+        url: process.env.CMS_URL,
+      },
+    },
+    'gatsby-plugin-image',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-postcss',
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [
+          process.env.GA_TRACKING_ID, // Google Analytics / GA
+        ],
+      },
+    },
+  ],
 };
 
 export default config;
