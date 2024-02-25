@@ -25,6 +25,10 @@ export const mainLinks = [
         text: 'YouTube'
     },
     {
+        url: '/podcasts',
+        text: 'Podcasts'
+    },
+    {
         url: '/journey',
         text: 'Journey'
     },
