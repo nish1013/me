@@ -3,7 +3,7 @@ export interface MainLink {
     text: string;
 } 
 
-export const mainLinks = [
+export const mainLinks: MainLink[] = [
     {
         url: '/blog',
         text: 'Blog'
@@ -25,7 +25,11 @@ export const mainLinks = [
         text: 'YouTube'
     },
     {
+        url: '/podcasts',
+        text: 'Podcasts'
+    },
+    {
         url: '/journey',
         text: 'Journey'
     },
-]
+];
