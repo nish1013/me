@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import "./styles.css"
-import Spotify from './spotify'
+import Spotify from './spotify/spotify'
 import Apple from './apple'
 
 export default function Podcasts() {
