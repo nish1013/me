@@ -1,23 +1,24 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image"
-import parse from "html-react-parser"
+import React from 'react';
+import { Link, graphql } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import parse from 'html-react-parser';
 
 // We're using Gutenberg so we need the block styles
-import "@wordpress/block-library/build-style/style.css"
-import "@wordpress/block-library/build-style/theme.css"
+import '@wordpress/block-library/build-style/style.css';
+import '@wordpress/block-library/build-style/theme.css';
 
-import "../styles/blog.css"
+import '../styles/blog.css';
 
-import Bio from "../components/bio/Bio"
-import Layout from "../components/layout/Layout"
-import Seo from "../components/seo/Seo"
+import Bio from '../components/bio/Bio';
+import Layout from '../components/layout/Layout';
+import Seo from '../components/seo/Seo';
 
 const BlogPostTemplate = ({ data: { previous, next, post } }) => {
   const featuredImage = {
-    image: post.featuredImage?.node?.localFile?.childImageSharp?.gatsbyImageData,
+    image:
+      post.featuredImage?.node?.localFile?.childImageSharp?.gatsbyImageData,
     alt: post.featuredImage?.node?.altText || ``,
-  }
+  };
 
   return (
     <Layout>
@@ -43,9 +44,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
 
         <hr />
 
-        <footer>
-            {/* <Bio/> */}
-        </footer>
+        <footer>{/* <Bio/> */}</footer>
       </article>
 
       <nav className="blog-post-nav">
@@ -66,9 +65,9 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
             )}
           </li>
           <li>
-              <Link to='/' rel="home">
-                ⌂ Home
-              </Link>
+            <Link to="/" rel="home">
+              ⌂ Home
+            </Link>
           </li>
           <li>
             {next && (
@@ -80,14 +79,14 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
         </ul>
       </nav>
     </Layout>
-  )
-}
+  );
+};
 
 export const Head = ({ data: { post } }) => (
   <Seo title={post.title} description={post.excerpt} />
-)
+);
 
-export default BlogPostTemplate
+export default BlogPostTemplate;
 
 export const pageQuery = graphql`
   query BlogPostById(
@@ -127,4 +126,4 @@ export const pageQuery = graphql`
       title
     }
   }
-`
+`;

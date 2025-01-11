@@ -1,9 +1,9 @@
 .btnx-journey {
-    display: flex !important;
-    flex-direction: column;
+  display: flex !important;
+  flex-direction: column;
 }
 
 .btnx-journey > a {
-    width: fit-content;
-    align-self: center
+  width: fit-content;
+  align-self: center;
 }

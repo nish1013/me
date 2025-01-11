@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 interface SpotifyItemProps {
-  url: string
+  url: string;
 }
 
 const SpotifyItem = ({ url }: SpotifyItemProps) => {

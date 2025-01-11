@@ -1,7 +1,9 @@
 # me
+
 My personal internet space.
 
 ## Tech stack
+
 TypeScript, React, Gatsby, Node.js and Tailwinds CSS
 
 ## Contributing

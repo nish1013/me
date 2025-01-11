@@ -1,5 +1,5 @@
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 
 interface Author {
   firstName: string;
@@ -23,34 +23,32 @@ const Bio: React.FC = () => {
         }
       }
     }
-  `)
+  `);
 
-  const avatarUrl = author?.avatar?.url
+  const avatarUrl = author?.avatar?.url;
 
   return (
     <div className="bio">
       {avatarUrl && (
         <img
-          alt={author?.firstName || ""}
+          alt={author?.firstName || ''}
           className="bio-avatar"
           src={avatarUrl}
         />
       )}
       {author?.firstName && (
         <p>
-          Written by <strong>{author.firstName}</strong>
-          {" "}
-          {author?.description || null}
-          {" "}
+          Written by <strong>{author.firstName}</strong>{' '}
+          {author?.description || null}{' '}
           {author?.twitter && (
-            <a href={`https://twitter.com/${author?.twitter || ""}`}>
+            <a href={`https://twitter.com/${author?.twitter || ''}`}>
               You should follow them on Twitter
             </a>
           )}
         </p>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Bio
+export default Bio;
