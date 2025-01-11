@@ -5,7 +5,7 @@ export interface CertificationModel {
 
 export const CERTIFICATIONS: CertificationModel[] = [
   {
-    title: 'HackerRrank',
+    title: 'HackerRank',
     uri: 'https://www.hackerrank.com/profile/nish1013',
   },
   {
