@@ -13,6 +13,10 @@ export const mainLinks: MainLink[] = [
      text: 'Linkedin'
     },
     {
+        url: '/certifications',
+        text: 'Certifications'
+    },
+    {
         url: 'https://github.com/nish1013',
         text: 'GitHub'
     },
