@@ -1,21 +1,22 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image"
-import parse from "html-react-parser"
+import React from 'react';
+import { Link, graphql } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import parse from 'html-react-parser';
 
 // We're using Gutenberg so we need the block styles
-import "@wordpress/block-library/build-style/style.css"
-import "@wordpress/block-library/build-style/theme.css"
+import '@wordpress/block-library/build-style/style.css';
+import '@wordpress/block-library/build-style/theme.css';
 
-import Bio from "../components/bio/Bio"
-import Layout from "../components/layout/Layout"
-import Seo from "../components/seo/Seo"
+import Bio from '../components/bio/Bio';
+import Layout from '../components/layout/Layout';
+import Seo from '../components/seo/Seo';
 
 const PageTemplate = ({ data: { previous, next, post } }) => {
   const featuredImage = {
-    image: post.featuredImage?.node?.localFile?.childImageSharp?.gatsbyImageData,
+    image:
+      post.featuredImage?.node?.localFile?.childImageSharp?.gatsbyImageData,
     alt: post.featuredImage?.node?.alt || ``,
-  }
+  };
 
   return (
     <Layout>
@@ -41,9 +42,7 @@ const PageTemplate = ({ data: { previous, next, post } }) => {
 
         <hr />
 
-        <footer>
-            {/* <Bio/> */}
-        </footer>
+        <footer>{/* <Bio/> */}</footer>
       </article>
 
       <nav className="blog-post-nav">
@@ -64,9 +63,9 @@ const PageTemplate = ({ data: { previous, next, post } }) => {
             )}
           </li>
           <li>
-            <Link to='/' rel="home">
-                ⌂ Home
-              </Link>
+            <Link to="/" rel="home">
+              ⌂ Home
+            </Link>
           </li>
 
           <li>
@@ -79,14 +78,14 @@ const PageTemplate = ({ data: { previous, next, post } }) => {
         </ul>
       </nav>
     </Layout>
-  )
-}
+  );
+};
 
 export const Head = ({ data: { post } }) => (
-    <Seo title={post.title} description={post.excerpt} />
-)
+  <Seo title={post.title} description={post.excerpt} />
+);
 
-export default PageTemplate
+export default PageTemplate;
 
 export const pageQuery = graphql`
   query PageById(
@@ -125,4 +124,4 @@ export const pageQuery = graphql`
       title
     }
   }
-`
+`;
