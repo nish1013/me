@@ -5,6 +5,10 @@ export interface MainLink {
 
 export const mainLinks: MainLink[] = [
   {
+    url: '/portfolio',
+    text: 'Portfolio',
+  },
+  {
     url: '/blog',
     text: 'Blog',
   },
