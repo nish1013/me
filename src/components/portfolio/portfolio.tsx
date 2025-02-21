@@ -5,7 +5,7 @@ interface CertificationProps {
   title: string;
   uri: string;
 }
-export default function Certification({ title, uri }: CertificationProps) {
+export default function Portfolio({ title, uri }: CertificationProps) {
   return (
     <div
       onClick={() => navigate(uri)}
