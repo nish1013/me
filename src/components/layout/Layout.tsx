@@ -19,7 +19,7 @@ export default function Layout({ children }: LayoutProps) {
           <Link to="/" className="font-semibold text-slate-800 hover:text-slate-600">
             Home
           </Link>
-          <div className="flex gap-6 text-sm">
+          <div className="flex gap-4 md:gap-6 text-sm">
             <Link to="/about" className="text-slate-600 hover:text-slate-900">
               About
             </Link>
@@ -28,6 +28,12 @@ export default function Layout({ children }: LayoutProps) {
             </Link>
             <Link to="/blog" className="text-slate-600 hover:text-slate-900">
               Blog
+            </Link>
+            <Link to="/certifications" className="text-slate-600 hover:text-slate-900 hidden md:block">
+              Certifications
+            </Link>
+            <Link to="/journey" className="text-slate-600 hover:text-slate-900 hidden md:block">
+              Journey
             </Link>
           </div>
         </nav>
