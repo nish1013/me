@@ -24,7 +24,7 @@ export default function Layout({ children }: LayoutProps) {
               About
             </Link>
             <Link to="/portfolio" className="text-slate-600 hover:text-slate-900 whitespace-nowrap">
-              Portfolio
+              Projects
             </Link>
             <Link to="/blog" className="text-slate-600 hover:text-slate-900 whitespace-nowrap">
               Blog
