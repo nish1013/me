@@ -10,12 +10,12 @@ export default function Specialties() {
   });
 
   return (
-    <div className="flex flex-wrap justify-center md:justify-start gap-2 py-4 max-w-sm">
+    <div className="flex flex-wrap justify-center gap-2 py-4 max-w-md">
       {trail.map((animationStyles, index) => (
         <animated.span
           key={index}
           style={animationStyles}
-          className="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-md text-sm font-medium border border-slate-200"
+          className="bg-white text-slate-700 px-3 py-1.5 rounded-md text-sm font-medium border border-slate-200"
         >
           {specialtiesHighlight[index]}
         </animated.span>
