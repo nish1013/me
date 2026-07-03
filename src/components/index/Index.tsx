@@ -4,15 +4,18 @@ import { mainLinks } from '../../data/MainLinks';
 import ProfileImage from './ProfileImage';
 import Summary from './Summary';
 import Specialties from './Specialties';
+
 export default function Index() {
   return (
-    <div className="flex flex-col items-center py-10 mx-10">
+    <div className="flex flex-col items-center py-12 px-6 max-w-2xl mx-auto">
       <ProfileImage />
       <Specialties />
       <Summary />
-      {mainLinks.map((l, i) => (
-        <IndexLink key={i} url={l.url} text={l.text} />
-      ))}
+      <div className="flex flex-col items-center mt-4 w-full">
+        {mainLinks.map((l, i) => (
+          <IndexLink key={i} url={l.url} text={l.text} />
+        ))}
+      </div>
     </div>
   );
 }
