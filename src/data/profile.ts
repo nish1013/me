@@ -29,6 +29,17 @@ export const skills = [
   'PostgreSQL',
 ];
 
+// Homepage highlights (top 6)
+export const specialtiesHighlight = [
+  'Blockchain',
+  'Web3',
+  'Distributed Systems',
+  'System Design',
+  'TypeScript',
+  'AWS',
+];
+
+// Full list for About page
 export const specialties = [
   'Blockchain',
   'Web3',
