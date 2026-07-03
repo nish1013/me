@@ -1,4 +1,4 @@
-export const tagline = 'Building innovative products with modern tech';
+export const tagline = 'Building scalable SaaS, distributed systems & blockchain apps';
 
 export const focusAreas = [
   { title: 'Blockchain & Web3', icon: '⛓️' },
@@ -8,27 +8,22 @@ export const focusAreas = [
 ];
 
 export const companies = [
+  'Bondex',
+  'Arena Entertainment',
   'IBM',
   'Visa',
   'M&S',
   'Virgin',
   'Telefonica',
-  'Arena Entertainment',
 ];
 
 export const skills = [
   'TypeScript',
   'React.js',
   'Node.js',
-  'Microservices',
+  'Go',
   'AWS',
   'Azure',
-];
-
-export const values = [
-  { title: 'Quality', desc: 'Delivering high-quality solutions' },
-  { title: 'Mentorship', desc: 'Growing junior developers' },
-  { title: 'Innovation', desc: 'Building cutting-edge products' },
 ];
 
 export const specialties = [
