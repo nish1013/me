@@ -16,26 +16,35 @@ export default function Index() {
   return (
     <animated.div
       style={fadeIn}
-      className="flex flex-col items-center py-12 px-6 max-w-2xl mx-auto"
+      className="min-h-screen flex items-center justify-center px-6 py-12"
     >
-      <ProfileImage />
-      <p className="text-slate-500 text-sm text-center mt-2 mb-2">{tagline}</p>
-      <Specialties />
+      {/* Mobile: stacked, Desktop: side by side */}
+      <div className="flex flex-col md:flex-row md:gap-16 md:items-center max-w-4xl">
+        {/* Left: Profile */}
+        <div className="flex flex-col items-center md:items-start">
+          <ProfileImage />
+          <p className="text-slate-500 text-sm text-center md:text-left mt-2 mb-2 max-w-xs">
+            {tagline}
+          </p>
+          <Specialties />
+        </div>
 
-      <div className="flex flex-col items-center mt-6 w-full">
-        <p className="text-xs text-slate-400 uppercase tracking-wider mb-3">
-          Work
-        </p>
-        {workLinks.map((l, i) => (
-          <IndexLink key={i} url={l.url} text={l.text} />
-        ))}
+        {/* Right: Links */}
+        <div className="flex flex-col items-center md:items-start mt-8 md:mt-0">
+          <p className="text-xs text-slate-400 uppercase tracking-wider mb-3">
+            Work
+          </p>
+          {workLinks.map((l, i) => (
+            <IndexLink key={i} url={l.url} text={l.text} />
+          ))}
 
-        <p className="text-xs text-slate-400 uppercase tracking-wider mt-6 mb-3">
-          Connect
-        </p>
-        {socialLinks.map((l, i) => (
-          <IndexLink key={i} url={l.url} text={l.text} />
-        ))}
+          <p className="text-xs text-slate-400 uppercase tracking-wider mt-6 mb-3">
+            Connect
+          </p>
+          {socialLinks.map((l, i) => (
+            <IndexLink key={i} url={l.url} text={l.text} />
+          ))}
+        </div>
       </div>
     </animated.div>
   );

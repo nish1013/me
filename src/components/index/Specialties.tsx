@@ -10,7 +10,7 @@ export default function Specialties() {
   });
 
   return (
-    <div className="flex flex-wrap justify-center gap-2 py-4 max-w-sm">
+    <div className="flex flex-wrap justify-center md:justify-start gap-2 py-4 max-w-sm">
       {trail.map((animationStyles, index) => (
         <animated.span
           key={index}
