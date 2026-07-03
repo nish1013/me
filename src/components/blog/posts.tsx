@@ -12,9 +12,9 @@ interface PostsProps {}
 const Posts: React.FC<PostsProps> = () => {
   const posts = useStaticQuery(query).allWpPost.nodes;
   return (
-    <div className="">
+    <div className="space-y-3">
       {posts.map((p: Post) => {
-        return <Post title={p.title} uri={p.uri} />;
+        return <Post key={p.id} title={p.title} uri={p.uri} />;
       })}
     </div>
   );
