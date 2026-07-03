@@ -4,8 +4,11 @@ export const profileSummary =
 export const specialties = [
   'Blockchain',
   'Web3',
+  'AWS',
+  'Azure',
   'TypeScript',
   'React',
   'Node.js',
   'Distributed Systems',
+  'Data Intensive Apps',
 ];
