@@ -24,6 +24,9 @@ export const skills = [
   'Go',
   'AWS',
   'Azure',
+  'Kubernetes',
+  'MongoDB',
+  'PostgreSQL',
 ];
 
 export const specialties = [
@@ -36,4 +39,7 @@ export const specialties = [
   'Node.js',
   'Distributed Systems',
   'Data Intensive Apps',
+  'Kubernetes',
+  'System Design',
+  'Gamification',
 ];
