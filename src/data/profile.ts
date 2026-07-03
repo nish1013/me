@@ -34,7 +34,7 @@ export const specialtiesHighlight = [
   'Blockchain',
   'Web3',
   'Distributed Systems',
-  'System Design',
+  'Node.js',
   'TypeScript',
   'AWS',
 ];
