@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSpring, animated } from 'react-spring';
-import IndexLink from './IndexLink';
-import { workLinks, socialLinks } from '../../data/MainLinks';
+import { socialLinks } from '../../data/MainLinks';
 import { tagline } from '../../data/profile';
 import ProfileImage from './ProfileImage';
 import Specialties from './Specialties';
@@ -16,38 +15,26 @@ export default function Index() {
   return (
     <animated.div
       style={fadeIn}
-      className="min-h-screen flex items-center justify-center px-6 py-12"
+      className="flex items-center justify-center px-6 py-16"
     >
-      {/* Mobile: simple stack, Desktop: card with grid */}
-      <div className="w-full max-w-3xl md:bg-slate-50 md:rounded-2xl md:p-12 md:shadow-sm">
-        {/* Profile Section - always centered */}
-        <div className="flex flex-col items-center text-center mb-8">
-          <ProfileImage />
-          <p className="text-slate-500 text-sm mt-3 max-w-md">{tagline}</p>
-          <Specialties />
-        </div>
+      <div className="flex flex-col items-center text-center max-w-lg">
+        <ProfileImage />
+        <p className="text-slate-500 text-sm mt-3 max-w-md">{tagline}</p>
+        <Specialties />
 
-        {/* Links Grid - stacked on mobile, side by side on desktop */}
-        <div className="flex flex-col md:flex-row md:justify-center md:gap-12">
-          {/* Work */}
-          <div className="flex flex-col items-center">
-            <p className="text-xs text-slate-400 uppercase tracking-wider mb-3">
-              Work
-            </p>
-            {workLinks.map((l, i) => (
-              <IndexLink key={i} url={l.url} text={l.text} />
-            ))}
-          </div>
-
-          {/* Connect */}
-          <div className="flex flex-col items-center mt-6 md:mt-0">
-            <p className="text-xs text-slate-400 uppercase tracking-wider mb-3">
-              Connect
-            </p>
-            {socialLinks.map((l, i) => (
-              <IndexLink key={i} url={l.url} text={l.text} />
-            ))}
-          </div>
+        {/* Social Links */}
+        <div className="flex flex-wrap justify-center gap-4 mt-6">
+          {socialLinks.map((l, i) => (
+            <a
+              key={i}
+              href={l.url}
+              className="text-slate-500 hover:text-slate-800 text-sm transition-colors"
+              target={l.url.startsWith('http') ? '_blank' : undefined}
+              rel={l.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+            >
+              {l.text}
+            </a>
+          ))}
         </div>
       </div>
     </animated.div>
