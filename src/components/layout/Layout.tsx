@@ -17,7 +17,7 @@ export default function Layout({ children }: LayoutProps) {
       <header className="sticky top-0 bg-white/90 backdrop-blur-sm border-b border-slate-100 z-10">
         <nav className="max-w-4xl mx-auto px-6 py-3 flex items-center justify-between">
           <Link to="/" className="font-semibold text-slate-800 hover:text-slate-600">
-            Nish
+            Home
           </Link>
           <div className="flex gap-6 text-sm">
             <Link to="/about" className="text-slate-600 hover:text-slate-900">
