@@ -9,11 +9,11 @@ import '@wordpress/block-library/build-style/theme.css';
 
 import '../styles/blog.css';
 
-import Bio from '../components/bio/Bio';
 import Layout from '../components/layout/Layout';
 import Seo from '../components/seo/Seo';
 
-const BlogPostTemplate = ({ data: { previous, next, post } }) => {
+const BlogPostTemplate = ({ data: { previous, next, post }, pageContext }) => {
+  const { backPath = '/blog', backLabel = 'Blog' } = pageContext;
   const featuredImage = {
     image:
       post.featuredImage?.node?.localFile?.childImageSharp?.gatsbyImageData,
@@ -21,63 +21,59 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
   };
 
   return (
-    <Layout>
-      <article
-        className="blog-post"
-        itemScope
-        itemType="http://schema.org/Article"
-      >
-        <header>
-          <h1 itemProp="headline">{parse(post.title)}</h1>
+    <Layout section={{ url: backPath, text: backLabel }}>
+      <div className="blog-container">
+        <Link to={backPath} className="blog-back-link">
+          ← Back to {backLabel}
+        </Link>
 
-          <p>{post.date}</p>
-
-          {/* if we have a featured image for this post let's display it */}
-          {featuredImage?.image && (
-            <GatsbyImage alt={featuredImage.alt} image={featuredImage.image} />
-          )}
-        </header>
-
-        {!!post.content && (
-          <section itemProp="articleBody">{parse(post.content)}</section>
-        )}
-
-        <hr />
-
-        <footer>{/* <Bio/> */}</footer>
-      </article>
-
-      <nav className="blog-post-nav">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
+        <article
+          className="blog-post"
+          itemScope
+          itemType="http://schema.org/Article"
         >
-          <li>
+          <header className="blog-header">
+            <h1 itemProp="headline">{parse(post.title)}</h1>
+            <time className="blog-date">{post.date}</time>
+
+            {featuredImage?.image && (
+              <GatsbyImage
+                alt={featuredImage.alt}
+                image={featuredImage.image}
+                className="blog-featured-image"
+              />
+            )}
+          </header>
+
+          {!!post.content && (
+            <section className="blog-content" itemProp="articleBody">
+              {parse(post.content)}
+            </section>
+          )}
+        </article>
+
+        <nav className="blog-post-nav">
+          <div className="nav-prev">
             {previous && (
               <Link to={previous.uri} rel="prev">
-                ← {parse(previous.title)}
+                <span className="nav-label">Previous</span>
+                <span className="nav-title">{parse(previous.title)}</span>
               </Link>
             )}
-          </li>
-          <li>
-            <Link to="/" rel="home">
-              ⌂ Home
-            </Link>
-          </li>
-          <li>
+          </div>
+          <div className="nav-home">
+            <Link to={backPath}>{backLabel}</Link>
+          </div>
+          <div className="nav-next">
             {next && (
               <Link to={next.uri} rel="next">
-                {parse(next.title)} →
+                <span className="nav-label">Next</span>
+                <span className="nav-title">{parse(next.title)}</span>
               </Link>
             )}
-          </li>
-        </ul>
-      </nav>
+          </div>
+        </nav>
+      </div>
     </Layout>
   );
 };

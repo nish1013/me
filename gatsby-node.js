@@ -30,36 +30,78 @@ exports.createPages = async (gatsbyUtilities) => {
 /**
  * This function creates all the individual blog pages in this site
  */
-const createSinglePages = async ({ posts, gatsbyUtilities }) =>
-  Promise.all(
-    posts.map(({ previous, post, next }) =>
-      // createPage is an action passed to createPages
-      // See https://www.gatsbyjs.com/docs/reference/config-files/actions/#createPage
-      gatsbyUtilities.actions.createPage({
-        // Use the WordPress uri as the Gatsby page path
-        // This is a good idea so that internal links and menus work 👍
-        path: post.uri,
+const createSinglePages = async ({ posts, gatsbyUtilities }) => {
+  const wpPostEdges = posts.filter(({ post }) => post.__typename === 'WpPost');
+  const wpPageEdges = posts.filter(({ post }) => post.__typename === 'WpPage');
 
-        // use the blog post template as the page component
-        component: path.resolve(
-          `./src/templates/${post.__typename.replace(`Wp`, ``).toLowerCase()}.js`
-        ),
-
-        // `context` is available in the template as a prop and
-        // as a variable in GraphQL.
-        context: {
-          // we need to add the post id here
-          // so our blog post template knows which blog post
-          // the current page is (when you open it in a browser)
-          id: post.id,
-
-          // We also use the next and previous id's to query them and add links!
-          previousPostId: previous ? previous.id : null,
-          nextPostId: next ? next.id : null,
-        },
-      })
-    )
+  const journeyEdges = sortPostEdges(
+    wpPostEdges.filter(({ post }) => getPostTags(post).includes('Journey')),
+    'ASC'
   );
+  const blogEdges = sortPostEdges(
+    wpPostEdges.filter(
+      ({ post }) =>
+        !getPostTags(post).includes('Journey') &&
+        getPostTags(post).includes('Tech')
+    ),
+    'DESC'
+  );
+  const otherPostEdges = wpPostEdges.filter(
+    ({ post }) =>
+      !getPostTags(post).includes('Journey') &&
+      !getPostTags(post).includes('Tech')
+  );
+
+  const postPageConfigs = [
+    ...buildPostPageConfigs(journeyEdges, '/journey', 'Journey'),
+    ...buildPostPageConfigs(blogEdges, '/blog', 'Blog'),
+    ...buildPostPageConfigs(otherPostEdges, '/blog', 'Blog'),
+  ];
+
+  const pageConfigs = [
+    ...postPageConfigs,
+    ...wpPageEdges.map(({ previous, post, next }) => ({
+      path: post.uri,
+      component: path.resolve(`./src/templates/page.js`),
+      context: {
+        id: post.id,
+        previousPostId: previous ? previous.id : null,
+        nextPostId: next ? next.id : null,
+      },
+    })),
+  ];
+
+  return Promise.all(
+    pageConfigs.map((config) => gatsbyUtilities.actions.createPage(config))
+  );
+};
+
+function getPostTags(post) {
+  return (post.tags?.nodes ?? []).map((tag) => tag.name);
+}
+
+function sortPostEdges(edges, order) {
+  return [...edges].sort((a, b) => {
+    const aDate = new Date(a.post.date);
+    const bDate = new Date(b.post.date);
+    return order === 'ASC' ? aDate - bDate : bDate - aDate;
+  });
+}
+
+function buildPostPageConfigs(edges, backPath, backLabel) {
+  return edges.map((edge, index) => ({
+    path: edge.post.uri,
+    component: path.resolve(`./src/templates/post.js`),
+    context: {
+      id: edge.post.id,
+      previousPostId: index > 0 ? edges[index - 1].post.id : null,
+      nextPostId:
+        index < edges.length - 1 ? edges[index + 1].post.id : null,
+      backPath,
+      backLabel,
+    },
+  }));
+}
 
 /**
  * This function creates all the individual blog pages in this site
@@ -136,16 +178,16 @@ async function getNodes({ graphql, reporter }) {
     query WpPosts {
       allWpPost(sort: { date: DESC }) {
         edges {
-          previous {
-            id
-          }
           post: node {
             __typename
             id
             uri
-          }
-          next {
-            id
+            date
+            tags {
+              nodes {
+                name
+              }
+            }
           }
         }
       }

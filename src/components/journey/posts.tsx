@@ -14,7 +14,7 @@ const Posts: React.FC<PostsProps> = () => {
   return (
     <div className="">
       {posts.map((p: Post) => {
-        return <Post title={p.title} uri={p.uri} />;
+        return <Post key={p.id} title={p.title} uri={p.uri} />;
       })}
     </div>
   );

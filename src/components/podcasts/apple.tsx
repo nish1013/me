@@ -4,7 +4,7 @@ import './styles.css';
 
 export default function Apple() {
   return (
-    <div className="flex flex-col items-center py-2 mx-10">
+    <div className="flex flex-col items-center py-2">
       <a
         href="https://podcasts.apple.com/us/podcast/embarking-on-a-journey-from-javascript-to-typescript/id1732927029?itsct=podcast_box_badge&itscg=30200&ls=1"
         style={{
