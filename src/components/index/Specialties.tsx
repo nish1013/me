@@ -1,13 +1,6 @@
 import React from 'react';
 import { useTrail, animated, config } from 'react-spring';
-
-const specialties = [
-  'TypeScript',
-  'React',
-  'Node.js',
-  'Microservices',
-  'Full-Stack',
-];
+import { specialties } from '../../data/profile';
 
 export default function Specialties() {
   const trail = useTrail(specialties.length, {
