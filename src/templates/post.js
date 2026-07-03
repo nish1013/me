@@ -9,11 +9,11 @@ import '@wordpress/block-library/build-style/theme.css';
 
 import '../styles/blog.css';
 
-import Bio from '../components/bio/Bio';
 import Layout from '../components/layout/Layout';
 import Seo from '../components/seo/Seo';
 
-const BlogPostTemplate = ({ data: { previous, next, post } }) => {
+const BlogPostTemplate = ({ data: { previous, next, post }, pageContext }) => {
+  const { backPath = '/blog', backLabel = 'Blog' } = pageContext;
   const featuredImage = {
     image:
       post.featuredImage?.node?.localFile?.childImageSharp?.gatsbyImageData,
@@ -21,10 +21,10 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
   };
 
   return (
-    <Layout>
+    <Layout section={{ url: backPath, text: backLabel }}>
       <div className="blog-container">
-        <Link to="/blog" className="blog-back-link">
-          ← Back to Blog
+        <Link to={backPath} className="blog-back-link">
+          ← Back to {backLabel}
         </Link>
 
         <article
@@ -62,7 +62,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
             )}
           </div>
           <div className="nav-home">
-            <Link to="/">Home</Link>
+            <Link to={backPath}>{backLabel}</Link>
           </div>
           <div className="nav-next">
             {next && (

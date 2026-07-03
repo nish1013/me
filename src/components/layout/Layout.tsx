@@ -6,6 +6,7 @@ import { navLinks } from '../../data/MainLinks';
 
 interface LayoutProps {
   children: JSX.Element;
+  section?: { url: string; text: string };
 }
 
 function getPageLabel(pathname: string): string | null {
@@ -21,7 +22,7 @@ function linkClassName(pathname: string, url: string) {
     : 'text-slate-600 hover:text-slate-900';
 }
 
-export default function Layout({ children }: LayoutProps) {
+export default function Layout({ children, section }: LayoutProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const { pathname } = useLocation();
   const pageLabel = getPageLabel(pathname);
@@ -93,13 +94,19 @@ export default function Layout({ children }: LayoutProps) {
           </div>
         )}
 
-        {pageLabel && (
+        {(pageLabel || section) && (
           <div className="md:hidden border-t border-slate-100 px-6 py-2 text-xs text-slate-500">
             <Link to="/" className="hover:text-slate-700">
               Home
             </Link>
             <span className="mx-1.5">/</span>
-            <span className="text-slate-700">{pageLabel}</span>
+            {section ? (
+              <Link to={section.url} className="text-slate-700 hover:text-slate-900">
+                {section.text}
+              </Link>
+            ) : (
+              <span className="text-slate-700">{pageLabel}</span>
+            )}
           </div>
         )}
       </header>
