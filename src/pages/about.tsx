@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { HeadFC, PageProps } from 'gatsby';
 import Layout from '../components/layout/Layout';
-import { tagline, focusAreas, companies, skills, values } from '../data/profile';
+import { tagline, focusAreas, companies, skills } from '../data/profile';
 
 const AboutPage: React.FC<PageProps> = () => {
   return (
@@ -46,7 +46,7 @@ const AboutPage: React.FC<PageProps> = () => {
         </section>
 
         {/* Skills */}
-        <section className="mb-8">
+        <section>
           <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">
             Tech Stack
           </h2>
@@ -58,24 +58,6 @@ const AboutPage: React.FC<PageProps> = () => {
               >
                 {skill}
               </span>
-            ))}
-          </div>
-        </section>
-
-        {/* Values */}
-        <section>
-          <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">
-            Values
-          </h2>
-          <div className="space-y-3">
-            {values.map((value, i) => (
-              <div key={i} className="flex items-start gap-3">
-                <span className="text-slate-400">→</span>
-                <div>
-                  <span className="font-medium text-slate-700">{value.title}</span>
-                  <span className="text-slate-500"> — {value.desc}</span>
-                </div>
-              </div>
             ))}
           </div>
         </section>
