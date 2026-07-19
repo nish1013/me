@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { HeadFC, PageProps } from 'gatsby';
 import Layout from '../components/layout/Layout';
-import { tagline, focusAreas, companies, skills } from '../data/profile';
+import { tagline, focusAreas, companies, skills, aiSkills } from '../data/profile';
 
 const AboutPage: React.FC<PageProps> = () => {
   return (
@@ -40,6 +40,23 @@ const AboutPage: React.FC<PageProps> = () => {
                 className="px-3 py-1.5 bg-slate-800 text-slate-100 text-sm rounded-md"
               >
                 {company}
+              </span>
+            ))}
+          </div>
+        </section>
+
+        {/* AI & LLM */}
+        <section className="mb-8">
+          <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">
+            AI & LLM
+          </h2>
+          <div className="flex flex-wrap gap-2">
+            {aiSkills.map((skill, i) => (
+              <span
+                key={i}
+                className="px-3 py-1.5 bg-slate-800 text-slate-100 text-sm rounded-md"
+              >
+                {skill}
               </span>
             ))}
           </div>

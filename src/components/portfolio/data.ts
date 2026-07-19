@@ -1,9 +1,15 @@
 export interface PortfolioModel {
   title: string;
   uri: string;
+  icon?: string;
 }
 
 export const PORTFOLIO: PortfolioModel[] = [
+  {
+    title: 'Actxio — Messy documents → clear actions & dates',
+    uri: 'https://actxio.com/',
+    icon: '🤖',
+  },
   {
     title: 'Web3 Wallet',
     uri: 'https://wallet.satharasinghe.com/',

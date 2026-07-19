@@ -9,7 +9,7 @@ export default function Portfolios() {
       <h1 className="text-2xl font-semibold text-slate-800 mb-6">Playground</h1>
       <div className="space-y-3">
         {PORTFOLIO.map((c, i) => (
-          <Portfolio key={i} title={c.title} uri={c.uri} />
+          <Portfolio key={i} title={c.title} uri={c.uri} icon={c.icon} />
         ))}
       </div>
     </div>
