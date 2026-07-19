@@ -24,6 +24,7 @@ export const skills = [
   'Node.js',
   'Python',
   'FastAPI',
+  'Pydantic',
   'LangChain',
   'LangSmith',
   'Go',
