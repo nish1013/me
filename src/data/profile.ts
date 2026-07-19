@@ -1,4 +1,4 @@
-export const tagline = 'Building scalable SaaS, distributed systems & blockchain apps';
+export const tagline = 'Building AI apps, scalable SaaS, distributed systems & blockchain apps';
 
 export const focusAreas = [
   { title: 'AI & LLM Applications', icon: '🤖' },
@@ -47,11 +47,13 @@ export const aiSkills = [
   'Rubric',
 ];
 
-// Homepage highlights (top 6)
+// Homepage highlights
 export const specialtiesHighlight = [
+  'AI',
   'Blockchain',
   'Web3',
   'Distributed Systems',
+  'Python',
   'Node.js',
   'TypeScript',
   'AWS',
