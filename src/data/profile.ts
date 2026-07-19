@@ -1,6 +1,7 @@
 export const tagline = 'Building scalable SaaS, distributed systems & blockchain apps';
 
 export const focusAreas = [
+  { title: 'AI & LLM Applications', icon: '🤖' },
   { title: 'Blockchain & Web3', icon: '⛓️' },
   { title: 'Distributed Systems', icon: '🌐' },
   { title: 'Data Intensive Apps', icon: '📊' },
@@ -21,12 +22,28 @@ export const skills = [
   'TypeScript',
   'React.js',
   'Node.js',
+  'Python',
+  'FastAPI',
+  'LangChain',
+  'LangSmith',
   'Go',
   'AWS',
   'Azure',
   'Kubernetes',
   'MongoDB',
   'PostgreSQL',
+];
+
+// AI & LLM capabilities (About page)
+export const aiSkills = [
+  'AI',
+  'LLM',
+  'Generative AI',
+  'Prompt Engineering',
+  'RAG',
+  'MCP',
+  'AI Scoring System',
+  'Rubric',
 ];
 
 // Homepage highlights (top 6)
