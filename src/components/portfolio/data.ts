@@ -17,5 +17,10 @@ export const PORTFOLIO: PortfolioModel[] = [
   {
     title: 'Claims API',
     uri: 'https://claims.satharasinghe.com/'
+  },
+  {
+    title: 'Python Playground — learn by running examples inline',
+    uri: 'https://python.satharasinghe.com/',
+    icon: '🐍',
   }
 ];
