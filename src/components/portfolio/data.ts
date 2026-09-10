@@ -23,7 +23,7 @@ export const PORTFOLIO: PortfolioModel[] = [
   {
     title: 'Web3 Wallet',
     uri: 'https://wallet.satharasinghe.com/',
-    icon: '👛',
+    icon: '🪙',
   },
   {
     title: 'Claims API',
