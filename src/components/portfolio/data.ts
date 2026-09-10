@@ -22,5 +22,10 @@ export const PORTFOLIO: PortfolioModel[] = [
     title: 'Python Playground — learn by running examples inline',
     uri: 'https://python.satharasinghe.com/',
     icon: '🐍',
-  }
+  },
+  {
+    title: 'PackagePulse — health checks for PyPI and npm dependencies',
+    uri: 'https://packagepulse.satharasinghe.com/',
+    icon: '📦',
+  },
 ];
