@@ -24,7 +24,7 @@ export const PORTFOLIO: PortfolioModel[] = [
     icon: '🐍',
   },
   {
-    title: 'PackagePulse — health checks for PyPI and npm dependencies',
+    title: 'PackagePulse — dependency health checks',
     uri: 'https://packagepulse.satharasinghe.com/',
     icon: '📦',
   },
