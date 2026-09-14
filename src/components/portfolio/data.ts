@@ -11,7 +11,7 @@ export const PORTFOLIO: PortfolioModel[] = [
     icon: '🤖',
   },
   {
-    title: 'RiskEngine — alerts on deposits and withdrawals',
+    title: 'RiskEngine — flags risky financial activity',
     uri: 'https://riskengine.satharasinghe.com/',
     icon: '🚨',
   },
