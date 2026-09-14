@@ -78,6 +78,12 @@ const AboutPage: React.FC<PageProps> = () => {
             ))}
           </div>
         </section>
+
+        <p className="mt-10 text-sm text-slate-400">
+          <a href="/journey" className="hover:text-slate-600 underline underline-offset-4">
+            My journey into software
+          </a>
+        </p>
       </div>
     </Layout>
   );

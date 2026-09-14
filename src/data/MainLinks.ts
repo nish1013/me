@@ -8,7 +8,6 @@ export const navLinks: MainLink[] = [
   { url: '/portfolio', text: 'Playground' },
   { url: '/blog', text: 'Blog' },
   { url: '/certifications', text: 'Certifications' },
-  { url: '/journey', text: 'Journey' },
   { url: '/podcasts', text: 'Podcasts' },
 ];
 
