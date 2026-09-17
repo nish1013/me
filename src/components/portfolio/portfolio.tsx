@@ -12,7 +12,7 @@ export default function Portfolio({ title, hint, uri, icon }: PortfolioProps) {
   return (
     <div
       onClick={() => navigate(uri)}
-      className="flex items-start gap-3 w-full max-w-lg md:max-w-xs mx-auto my-2 cursor-pointer border border-slate-300 hover:bg-slate-50 hover:border-slate-400 px-5 py-3 rounded-lg transition-colors"
+      className="flex items-start gap-3 w-full max-w-lg md:max-w-xs mx-auto my-2 cursor-pointer border border-slate-300 hover:bg-slate-50 hover:border-slate-400 px-6 py-3 rounded-lg transition-colors"
     >
       {icon && (
         <span aria-hidden="true" className="leading-6">
