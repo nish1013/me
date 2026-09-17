@@ -16,14 +16,19 @@ export const PORTFOLIO: PortfolioModel[] = [
     icon: '🚨',
   },
   {
-    title: 'Python Playground — learn by running examples inline',
-    uri: 'https://python.satharasinghe.com/',
-    icon: '🐍',
-  },
-  {
     title: 'PackagePulse — dependency health checks',
     uri: 'https://packagepulse.satharasinghe.com/',
     icon: '📦',
+  },
+  {
+    title: 'LedgerMatch — finds mismatched transactions',
+    uri: 'https://ledgermatch.satharasinghe.com/',
+    icon: '⚖️',
+  },
+  {
+    title: 'Python Playground — learn by running examples inline',
+    uri: 'https://python.satharasinghe.com/',
+    icon: '🐍',
   },
   {
     title: 'Web3 Wallet',
