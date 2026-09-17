@@ -21,7 +21,7 @@ export const PORTFOLIO: PortfolioModel[] = [
     icon: '📦',
   },
   {
-    title: 'LedgerMatch — reconciles a ledger against a bank statement',
+    title: 'LedgerMatch — finds mismatched transactions',
     uri: 'https://ledgermatch.satharasinghe.com/',
     icon: '⚖️',
   },
