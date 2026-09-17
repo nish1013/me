@@ -44,7 +44,7 @@ export const PORTFOLIO: PortfolioModel[] = [
   },
   {
     title: 'Claims API',
-    hint: 'Insurance claims, updated live',
+    hint: 'Insurance claims processor',
     uri: 'https://claims.satharasinghe.com/',
     icon: '🧾',
   },
