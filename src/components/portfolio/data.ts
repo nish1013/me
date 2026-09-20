@@ -13,19 +13,19 @@ export const PORTFOLIO: PortfolioModel[] = [
     icon: '🤖',
   },
   {
-    title: 'RiskEngine',
+    title: 'Risk Engine',
     hint: 'Flags risky financial activity',
     uri: 'https://riskengine.satharasinghe.com/',
     icon: '🚨',
   },
   {
-    title: 'PackagePulse',
+    title: 'Package Pulse',
     hint: 'Dependency health checks',
     uri: 'https://packagepulse.satharasinghe.com/',
     icon: '📦',
   },
   {
-    title: 'LedgerMatch',
+    title: 'Ledger Match',
     hint: 'Finds mismatched transactions',
     uri: 'https://ledgermatch.satharasinghe.com/',
     icon: '⚖️',
