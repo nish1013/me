@@ -31,6 +31,12 @@ export const PORTFOLIO: PortfolioModel[] = [
     icon: '⚖️',
   },
   {
+    title: 'Interactive Python',
+    hint: 'Checks your Python as you learn',
+    uri: 'https://nishpy.satharasinghe.com/',
+    icon: '🎓',
+  },
+  {
     title: 'Python Playground',
     hint: 'Learn by running examples inline',
     uri: 'https://python.satharasinghe.com/',
