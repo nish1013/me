@@ -1,0 +1,48 @@
+:root {
+  color-scheme: light;
+
+  --c-white: 255 255 255;
+  --c-slate-50: 248 250 252;
+  --c-slate-100: 241 245 249;
+  --c-slate-200: 226 232 240;
+  --c-slate-300: 203 213 225;
+  --c-slate-400: 148 163 184;
+  --c-slate-500: 100 116 139;
+  --c-slate-600: 71 85 105;
+  --c-slate-700: 51 65 85;
+  --c-slate-800: 30 41 59;
+  --c-slate-900: 15 23 42;
+
+  --c-amber-50: 255 251 235;
+  --c-amber-800: 146 64 14;
+
+  /* Stays dark in both themes: slate-800 is also heading text, which inverts the other way. */
+  --c-band: 30 41 59;
+  --c-band-ink: 226 232 240;
+  --c-band-ink-muted: 203 213 225;
+  --c-band-chip: 51 65 85;
+  --c-band-chip-hover: 71 85 105;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --c-white: 15 23 42;
+  --c-slate-50: 30 41 59;
+  --c-slate-100: 51 65 85;
+  --c-slate-200: 71 85 105;
+  --c-slate-300: 100 116 139;
+  --c-slate-400: 148 163 184;
+  --c-slate-500: 148 163 184;
+  --c-slate-600: 203 213 225;
+  --c-slate-700: 226 232 240;
+  --c-slate-800: 241 245 249;
+  --c-slate-900: 248 250 252;
+
+  --c-amber-50: 69 26 3;
+  --c-amber-800: 252 211 77;
+}
+
+html {
+  background-color: rgb(var(--c-white));
+}

@@ -37,7 +37,7 @@ const AboutPage: React.FC<PageProps> = () => {
             {companies.map((company, i) => (
               <span
                 key={i}
-                className="px-3 py-1.5 bg-slate-800 text-slate-100 text-sm rounded-md"
+                className="px-3 py-1.5 bg-band text-band-ink text-sm rounded-md"
               >
                 {company}
               </span>
@@ -54,7 +54,7 @@ const AboutPage: React.FC<PageProps> = () => {
             {aiSkills.map((skill, i) => (
               <span
                 key={i}
-                className="px-3 py-1.5 bg-slate-800 text-slate-100 text-sm rounded-md"
+                className="px-3 py-1.5 bg-band text-band-ink text-sm rounded-md"
               >
                 {skill}
               </span>
