@@ -22,6 +22,8 @@
   --c-band-ink-muted: 203 213 225;
   --c-band-chip: 51 65 85;
   --c-band-chip-hover: 71 85 105;
+
+  --c-link: 37 99 235;
 }
 
 :root[data-theme='dark'] {
@@ -41,6 +43,8 @@
 
   --c-amber-50: 69 26 3;
   --c-amber-800: 252 211 77;
+
+  --c-link: 96 165 250;
 }
 
 html {
