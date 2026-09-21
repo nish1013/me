@@ -6,14 +6,14 @@
 
 .blog-back-link {
   display: inline-block;
-  color: #64748b;
+  color: rgb(var(--c-slate-500));
   font-size: 0.875rem;
   margin-bottom: 2rem;
   text-decoration: none;
 }
 
 .blog-back-link:hover {
-  color: #334155;
+  color: rgb(var(--c-slate-700));
 }
 
 .blog-header {
@@ -23,14 +23,14 @@
 .blog-header h1 {
   font-size: 1.75rem;
   font-weight: 600;
-  color: #1e293b;
+  color: rgb(var(--c-slate-800));
   line-height: 1.3;
   margin-bottom: 0.5rem;
 }
 
 .blog-date {
   display: block;
-  color: #64748b;
+  color: rgb(var(--c-slate-500));
   font-size: 0.875rem;
   margin-bottom: 1.5rem;
 }
@@ -41,7 +41,7 @@
 }
 
 .blog-content {
-  color: #334155;
+  color: rgb(var(--c-slate-700));
   line-height: 1.8;
 }
 
@@ -51,15 +51,15 @@
 
 .blog-content h2,
 .blog-content h3 {
-  color: #1e293b;
+  color: rgb(var(--c-slate-800));
   font-weight: 600;
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
 
 .blog-content pre {
-  background: #1e293b;
-  color: #e2e8f0;
+  background: rgb(var(--c-band));
+  color: rgb(var(--c-band-ink));
   padding: 1rem;
   border-radius: 0.5rem;
   overflow-x: auto;
@@ -72,7 +72,7 @@
 }
 
 .blog-content a {
-  color: #3b82f6;
+  color: rgb(var(--c-link));
   text-decoration: underline;
 }
 
@@ -89,16 +89,16 @@
   gap: 1rem;
   margin-top: 3rem;
   padding-top: 2rem;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid rgb(var(--c-slate-200));
 }
 
 .blog-post-nav a {
   text-decoration: none;
-  color: #334155;
+  color: rgb(var(--c-slate-700));
 }
 
 .blog-post-nav a:hover {
-  color: #1e293b;
+  color: rgb(var(--c-slate-800));
 }
 
 .nav-prev,
@@ -116,19 +116,19 @@
 
 .nav-home a {
   padding: 0.5rem 1rem;
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgb(var(--c-slate-200));
   border-radius: 0.375rem;
   font-size: 0.875rem;
 }
 
 .nav-home a:hover {
-  background: #f8fafc;
+  background: rgb(var(--c-slate-50));
 }
 
 .nav-label {
   display: block;
   font-size: 0.75rem;
-  color: #94a3b8;
+  color: rgb(var(--c-slate-500));
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 0.25rem;
