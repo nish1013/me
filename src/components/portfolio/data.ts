@@ -13,6 +13,12 @@ export const PORTFOLIO: PortfolioModel[] = [
     icon: '🤖',
   },
   {
+    title: 'Club Booking',
+    hint: 'School clubs with a waiting list',
+    uri: 'https://cbooking.satharasinghe.com/',
+    icon: '🎟️',
+  },
+  {
     title: 'Risk Engine',
     hint: 'Flags risky financial activity',
     uri: 'https://riskengine.satharasinghe.com/',
