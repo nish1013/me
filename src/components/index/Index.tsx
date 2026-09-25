@@ -1,42 +1,82 @@
-import React from 'react';
-import { useSpring, animated } from 'react-spring';
+import React, { useMemo } from 'react';
+import { graphql, Link, useStaticQuery } from 'gatsby';
+import photo from '../../images/profile.jpeg';
 import { socialLinks } from '../../data/MainLinks';
-import { tagline } from '../../data/profile';
-import ProfileImage from './ProfileImage';
-import Specialties from './Specialties';
+import { companies, intro, name, tagline } from '../../data/profile';
+import { PORTFOLIO } from '../portfolio/data';
+import CodeView from '../code/CodeView';
+import { CodeLink, CodeSource } from '../code/code.types';
+import { decodeEntities } from './posts.util';
+import { handleFromUrl } from './links.util';
+
+interface LatestPost {
+  title: string;
+  uri: string;
+}
+
+interface LatestPostsConnection {
+  nodes: LatestPost[];
+}
+
+interface LatestPostsQuery {
+  allWpPost: LatestPostsConnection;
+}
 
 export default function Index() {
-  const fadeIn = useSpring({
-    from: { opacity: 0, transform: 'translateY(20px)' },
-    to: { opacity: 1, transform: 'translateY(0px)' },
-    config: { tension: 200, friction: 20 },
-  });
+  const { allWpPost } = useStaticQuery<LatestPostsQuery>(query);
+
+  const source = useMemo<CodeSource>(
+    () => ({
+      tagline,
+      companies,
+      projects: PORTFOLIO.map((p) => ({
+        name: p.title,
+        does: p.hint ?? '',
+        url: p.uri,
+      })),
+      posts: allWpPost.nodes.map((p) => ({
+        title: decodeEntities(p.title),
+        url: p.uri,
+      })),
+      allPostsUrl: '/blog',
+      links: socialLinks.map(
+        (l): CodeLink => ({
+          key: l.text.toLowerCase(),
+          handle: handleFromUrl(l.url),
+          url: l.url,
+        })
+      ),
+      sourceUrl: 'https://github.com/nish1013/me',
+    }),
+    [allWpPost]
+  );
 
   return (
-    <animated.div
-      style={fadeIn}
-      className="flex items-center justify-center px-6 py-16"
-    >
-      <div className="flex flex-col items-center text-center max-w-lg">
-        <ProfileImage />
-        <p className="text-slate-500 text-sm mt-3 max-w-md">{tagline}</p>
-        <Specialties />
-
-        {/* Social Links */}
-        <div className="flex flex-wrap justify-center gap-4 mt-6">
-          {socialLinks.map((l, i) => (
-            <a
-              key={i}
-              href={l.url}
-              className="text-slate-500 hover:text-slate-800 text-sm transition-colors"
-              target={l.url.startsWith('http') ? '_blank' : undefined}
-              rel={l.url.startsWith('http') ? 'noopener noreferrer' : undefined}
-            >
-              {l.text}
-            </a>
-          ))}
-        </div>
+    <>
+      <CodeView name={name} intro={intro} photo={photo} source={source} />
+      <div className="mx-auto flex max-w-5xl justify-end px-5 pb-10 md:px-6">
+        <Link
+          to="/journey"
+          className="inline-flex min-h-[44px] items-center text-xs text-slate-500 hover:text-slate-700"
+        >
+          Journey
+        </Link>
       </div>
-    </animated.div>
+    </>
   );
 }
+
+const query = graphql`
+  query LatestPosts {
+    allWpPost(
+      filter: { tags: { nodes: { elemMatch: { name: { in: ["Tech"] } } } } }
+      sort: { fields: [date], order: DESC }
+      limit: 3
+    ) {
+      nodes {
+        title
+        uri
+      }
+    }
+  }
+`;

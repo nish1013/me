@@ -8,6 +8,7 @@ import ThemeControl from '../theme/ThemeControl';
 interface LayoutProps {
   children: JSX.Element;
   section?: { url: string; text: string };
+  showBanner?: boolean;
 }
 
 function getPageLabel(pathname: string): string | null {
@@ -23,7 +24,7 @@ function linkClassName(pathname: string, url: string) {
     : 'text-slate-600 hover:text-slate-900';
 }
 
-export default function Layout({ children, section }: LayoutProps) {
+export default function Layout({ children, section, showBanner = true }: LayoutProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const { pathname } = useLocation();
   const pageLabel = getPageLabel(pathname);
@@ -34,11 +35,13 @@ export default function Layout({ children, section }: LayoutProps) {
 
   return (
     <div className="w-full min-h-screen bg-white">
-      <AlertInfo
-        title="Built with TypeScript, React & Node.js"
-        label="View Code"
-        onClick={() => navigate('https://github.com/nish1013/me')}
-      />
+      {showBanner && (
+        <AlertInfo
+          title="Built with TypeScript, React & Node.js"
+          label="View Code"
+          onClick={() => navigate('https://github.com/nish1013/me')}
+        />
+      )}
       <header className="sticky top-0 bg-white/90 backdrop-blur-sm border-b border-slate-100 z-10">
         <nav className="max-w-4xl mx-auto flex items-center justify-between gap-4 px-6 py-3">
           <Link

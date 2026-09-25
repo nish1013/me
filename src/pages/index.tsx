@@ -5,7 +5,7 @@ import Index from '../components/index/Index';
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
-    <Layout>
+    <Layout showBanner={false}>
       <Index />
     </Layout>
   );
