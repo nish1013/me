@@ -4,6 +4,7 @@ import { useLocation } from '@reach/router';
 import AlertInfo from '../alert/AlertInfo';
 import { navLinks } from '../../data/MainLinks';
 import ThemeControl from '../theme/ThemeControl';
+import Footer from './Footer';
 
 interface LayoutProps {
   children: JSX.Element;
@@ -120,6 +121,7 @@ export default function Layout({ children, section, showBanner = true }: LayoutP
         )}
       </header>
       <main>{children}</main>
+      <Footer />
     </div>
   );
 }
