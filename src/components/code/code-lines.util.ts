@@ -12,12 +12,15 @@ export function buildCodeLines(
   const { indent, quote } = dialect;
   const end = (bracket: string) => punct(bracket + dialect.statementEnd);
 
-  add(...dialect.declare(dialect.names.building), punct(dialect.groupOpen));
+  add(
+    ...dialect.declare(dialect.declarations.building),
+    punct(dialect.groupOpen)
+  );
   add(plain(indent), str(quote(source.tagline)), punct(dialect.statementEnd));
   if (dialect.groupClose) add(punct(dialect.groupClose));
   add();
 
-  add(...dialect.declare(dialect.names.workedWith), punct('['));
+  add(...dialect.declare(dialect.declarations.workedWith), punct('['));
   for (const group of companyRows(source.companies, layout.compact)) {
     add(
       plain(indent),
@@ -28,7 +31,7 @@ export function buildCodeLines(
   add();
 
   add(comment(dialect, PLAYGROUND_HINT));
-  add(...dialect.declare(dialect.names.playground), punct('['));
+  add(...dialect.declare(dialect.declarations.playground), punct('['));
   const width = Math.max(...source.projects.map((p) => p.name.length));
   for (const project of source.projects) {
     const name = str(quote(project.name), project.url);
@@ -69,17 +72,22 @@ export function buildCodeLines(
   add(end(']'));
   add();
 
-  add(...dialect.declare(dialect.names.writing), punct('['), plain('  '), {
-    text: dialect.commentMark + 'All posts ↗',
-    kind: 'comment',
-    href: source.allPostsUrl,
-  });
+  add(
+    ...dialect.declare(dialect.declarations.writing),
+    punct('['),
+    plain('  '),
+    {
+      text: dialect.commentMark + 'All posts ↗',
+      kind: 'comment',
+      href: source.allPostsUrl,
+    }
+  );
   for (const post of source.posts)
     add(plain(indent), str(quote(post.title), post.url), punct(','));
   add(end(']'));
   add();
 
-  add(...dialect.declare(dialect.names.elsewhere), punct('{'));
+  add(...dialect.declare(dialect.declarations.elsewhere), punct('{'));
   for (const link of source.links) {
     add(
       plain(indent),

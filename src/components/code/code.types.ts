@@ -5,6 +5,7 @@ export type TokenKind =
   | 'string'
   | 'prop'
   | 'fn'
+  | 'type'
   | 'comment'
   | 'punct'
   | 'plain';
@@ -63,20 +64,25 @@ export interface Dialect {
   statementEnd: string;
   groupOpen: string;
   groupClose: string;
-  declare: (name: string) => Token[];
+  declare: (declaration: Declaration) => Token[];
   quote: (value: string) => string;
   key: (name: string) => Token;
   field: (name: string) => Token;
   assign: string;
   recordOpen: Token[];
   recordClose: string;
-  names: DialectNames;
+  declarations: DialectDeclarations;
 }
 
-export interface DialectNames {
-  building: string;
-  workedWith: string;
-  playground: string;
-  writing: string;
-  elsewhere: string;
+export interface Declaration {
+  name: string;
+  type?: string;
+}
+
+export interface DialectDeclarations {
+  building: Declaration;
+  workedWith: Declaration;
+  playground: Declaration;
+  writing: Declaration;
+  elsewhere: Declaration;
 }

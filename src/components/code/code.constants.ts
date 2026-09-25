@@ -5,6 +5,7 @@ export const TOKEN_CLASS: Record<TokenKind, string> = {
   string: 'text-code-string',
   prop: 'text-code-prop',
   fn: 'text-code-fn',
+  type: 'text-code-fn',
   comment: 'text-code-comment',
   punct: 'text-code-punct',
   plain: 'text-slate-800',
@@ -23,7 +24,7 @@ const typescript: Dialect = {
   statementEnd: ';',
   groupOpen: '',
   groupClose: '',
-  declare: (name) => [
+  declare: ({ name }) => [
     token('export', 'keyword'),
     token(' ', 'plain'),
     token('const', 'keyword'),
@@ -37,12 +38,12 @@ const typescript: Dialect = {
   assign: ': ',
   recordOpen: [token('{ ', 'punct')],
   recordClose: ' },',
-  names: {
-    building: 'building',
-    workedWith: 'workedWith',
-    playground: 'playground',
-    writing: 'writing',
-    elsewhere: 'elsewhere',
+  declarations: {
+    building: { name: 'building' },
+    workedWith: { name: 'workedWith' },
+    playground: { name: 'playground' },
+    writing: { name: 'writing' },
+    elsewhere: { name: 'elsewhere' },
   },
 };
 
@@ -57,19 +58,27 @@ const python: Dialect = {
   statementEnd: '',
   groupOpen: '(',
   groupClose: ')',
-  declare: (name) => [token(name, 'prop'), token(' = ', 'punct')],
+  declare: ({ name, type }) =>
+    type
+      ? [
+          token(name, 'prop'),
+          token(': ', 'punct'),
+          token(type, 'type'),
+          token(' = ', 'punct'),
+        ]
+      : [token(name, 'prop'), token(' = ', 'punct')],
   quote: (value) => `"${value.replace(/"/g, '\\"')}"`,
   key: (name) => token(`"${name}"`, 'string'),
   field: (name) => token(name, 'prop'),
   assign: '=',
   recordOpen: [token('Project', 'fn'), token('(', 'punct')],
   recordClose: '),',
-  names: {
-    building: 'building',
-    workedWith: 'worked_with',
-    playground: 'playground',
-    writing: 'writing',
-    elsewhere: 'elsewhere',
+  declarations: {
+    building: { name: 'building', type: 'str' },
+    workedWith: { name: 'worked_with', type: 'list[str]' },
+    playground: { name: 'playground', type: 'list[Project]' },
+    writing: { name: 'writing', type: 'list[str]' },
+    elsewhere: { name: 'elsewhere', type: 'dict[str, str]' },
   },
 };
 
