@@ -51,7 +51,9 @@ export default function CodeView({
     <section className="mx-auto max-w-5xl px-3 py-6 md:px-6 md:py-12">
       <div className="overflow-hidden rounded-xl border border-slate-200 bg-slate-50">
         <div className="flex border-b border-slate-200 text-xs md:text-[13px]">
-          {VIEWS.map((key) => {
+          {VIEWS.map((key, i) => {
+            const edge =
+              i === VIEWS.length - 1 ? 'border-r-0 md:border-r' : 'border-r';
             const active = key === view;
             return (
               <button
@@ -59,7 +61,7 @@ export default function CodeView({
                 type="button"
                 aria-pressed={active}
                 onClick={() => setView(key)}
-                className={`min-h-[44px] border-r border-slate-200 px-4 md:px-6 border-b-2 ${
+                className={`min-h-[44px] flex-1 border-slate-200 px-4 md:flex-none md:px-6 border-b-2 ${edge} ${
                   active
                     ? 'border-b-code-prop bg-white text-slate-800'
                     : 'border-b-transparent text-slate-500 hover:text-slate-800'
