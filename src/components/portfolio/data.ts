@@ -13,12 +13,6 @@ export const PORTFOLIO: PortfolioModel[] = [
     icon: '🤖',
   },
   {
-    title: 'Club Booking',
-    hint: 'School clubs with a waiting list',
-    uri: 'https://cbooking.satharasinghe.com/',
-    icon: '🎟️',
-  },
-  {
     title: 'Risk Engine',
     hint: 'Flags risky financial activity',
     uri: 'https://riskengine.satharasinghe.com/',
@@ -59,5 +53,11 @@ export const PORTFOLIO: PortfolioModel[] = [
     hint: 'Insurance claims processor',
     uri: 'https://claims.satharasinghe.com/',
     icon: '🧾',
+  },
+  {
+    title: 'Club Booking',
+    hint: 'School clubs with a waiting list',
+    uri: 'https://cbooking.satharasinghe.com/',
+    icon: '🎟️',
   },
 ];
