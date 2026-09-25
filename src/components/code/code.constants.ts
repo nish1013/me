@@ -1,4 +1,4 @@
-import { Dialect, Lang, Token, TokenKind } from './code.types';
+import { Dialect, Lang, Token, TokenKind, View } from './code.types';
 
 export const TOKEN_CLASS: Record<TokenKind, string> = {
   keyword: 'text-code-keyword',
@@ -84,6 +84,10 @@ const python: Dialect = {
 
 export const DIALECTS: Record<Lang, Dialect> = { ts: typescript, py: python };
 
-export const LANGS: Lang[] = ['ts', 'py'];
+export const VIEWS: View[] = ['py', 'ts', 'preview'];
+
+export const DEFAULT_VIEW: View = 'py';
+
+export const PREVIEW = { tab: 'Preview', label: 'Rendered' };
 
 export const PLAYGROUND_HINT = 'Live products. Click a name to open it.';

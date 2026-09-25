@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'gatsby';
 import { TOKEN_CLASS } from './code.constants';
 import { CodeLine, Token } from './code.types';
+import SiteLink from './SiteLink';
 
 interface CodeLinesProps {
   lines: CodeLine[];
@@ -43,23 +43,12 @@ export default function CodeLines({ lines, numbered }: CodeLinesProps) {
 function CodeToken({ token }: CodeTokenProps) {
   const className = TOKEN_CLASS[token.kind];
   if (!token.href) return <span className={className}>{token.text}</span>;
-
-  const linkClass = `${className} underline decoration-dotted underline-offset-4 hover:decoration-solid`;
-  if (token.href.startsWith('/')) {
-    return (
-      <Link to={token.href} className={linkClass}>
-        {token.text}
-      </Link>
-    );
-  }
   return (
-    <a
+    <SiteLink
       href={token.href}
-      className={linkClass}
-      target="_blank"
-      rel="noopener noreferrer"
+      className={`${className} underline decoration-dotted underline-offset-4 hover:decoration-solid`}
     >
       {token.text}
-    </a>
+    </SiteLink>
   );
 }

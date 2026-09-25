@@ -1,8 +1,9 @@
 import React, { useMemo, useState } from 'react';
-import { DIALECTS, LANGS } from './code.constants';
+import { DEFAULT_VIEW, DIALECTS, PREVIEW, VIEWS } from './code.constants';
 import { buildCodeLines } from './code-lines.util';
-import { CodeSource, Lang } from './code.types';
+import { CodeSource, Dialect, View } from './code.types';
 import CodeLines from './CodeLines';
+import PreviewBody from './PreviewBody';
 
 interface CodeViewProps {
   name: string;
@@ -11,8 +12,20 @@ interface CodeViewProps {
   source: CodeSource;
 }
 
+interface HeroProps {
+  name: string;
+  intro: string;
+  photo: string;
+  dialect: Dialect | null;
+}
+
+interface CodeBodyProps {
+  dialect: Dialect;
+  source: CodeSource;
+}
+
 interface GutterProps {
-  n: number;
+  n?: number;
   align?: string;
 }
 
@@ -22,15 +35,122 @@ interface PrefixProps {
 
 const HERO_LINES = 4;
 
+// Keeps the doc-comment rows' height in Preview so the hero does not move when switching tabs.
+const BLANK = ' ';
+
 export default function CodeView({
   name,
   intro,
   photo,
   source,
 }: CodeViewProps) {
-  const [lang, setLang] = useState<Lang>('ts');
-  const dialect = DIALECTS[lang];
+  const [view, setView] = useState<View>(DEFAULT_VIEW);
+  const dialect = view === 'preview' ? null : DIALECTS[view];
 
+  return (
+    <section className="mx-auto max-w-5xl px-3 py-6 md:px-6 md:py-12">
+      <div className="overflow-hidden rounded-xl border border-slate-200 bg-slate-50">
+        <div className="flex border-b border-slate-200 text-xs md:text-[13px]">
+          {VIEWS.map((key, i) => {
+            const edge =
+              i === VIEWS.length - 1 ? 'border-r-0 md:border-r' : 'border-r';
+            const active = key === view;
+            return (
+              <button
+                key={key}
+                type="button"
+                aria-pressed={active}
+                onClick={() => setView(key)}
+                className={`min-h-[44px] flex-1 border-slate-200 px-4 md:flex-none md:px-6 border-b-2 ${edge} ${
+                  active
+                    ? 'border-b-code-prop bg-white text-slate-800'
+                    : 'border-b-transparent text-slate-500 hover:text-slate-800'
+                }`}
+              >
+                {key === 'preview' ? <PreviewTabLabel /> : DIALECTS[key].file}
+              </button>
+            );
+          })}
+          <span className="ml-auto hidden items-center px-5 text-slate-500 md:flex">
+            {dialect ? dialect.label : PREVIEW.label}
+          </span>
+        </div>
+
+        <div className="px-4 pb-8 pt-5 text-[13px] leading-[22px] md:px-0 md:pb-9 md:pt-7 md:text-[15px] md:leading-7">
+          <Hero name={name} intro={intro} photo={photo} dialect={dialect} />
+          {dialect ? (
+            <CodeBody dialect={dialect} source={source} />
+          ) : (
+            <div className="pt-4 md:pl-[4.25rem] md:pr-8">
+              <PreviewBody source={source} />
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PreviewTabLabel() {
+  return (
+    <span className="inline-flex items-center gap-1.5">
+      <svg
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+        className="h-4 w-4 text-code-prop"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z" />
+        <circle cx="12" cy="12" r="3" />
+      </svg>
+      {PREVIEW.tab}
+    </span>
+  );
+}
+
+function Hero({ name, intro, photo, dialect }: HeroProps) {
+  const prefix = dialect ? dialect.docPrefix : '';
+  return (
+    <div className="md:grid md:grid-cols-[3rem_1fr] md:gap-x-5">
+      <Gutter n={dialect ? 1 : undefined} />
+      <span className="text-code-comment">
+        {dialect ? dialect.docOpen : BLANK}
+      </span>
+
+      <Gutter n={dialect ? 2 : undefined} align="md:self-center" />
+      <span className="flex flex-col gap-3 py-3 md:flex-row md:items-center md:gap-5">
+        <Prefix text={prefix} />
+        <img
+          src={photo}
+          alt="Profile Image"
+          className="h-20 w-20 rounded-full object-cover md:h-24 md:w-24"
+        />
+        <h1 className="text-[44px] font-bold leading-none tracking-tight text-slate-900 md:text-6xl">
+          {name}
+        </h1>
+      </span>
+
+      <Gutter n={dialect ? 3 : undefined} align="md:self-baseline" />
+      <span className="flex items-baseline pb-3 md:self-baseline">
+        <Prefix text={prefix} />
+        <span className="max-w-3xl font-intro text-[19px] font-medium leading-normal text-slate-900 md:text-[23px]">
+          {intro}
+        </span>
+      </span>
+
+      <Gutter n={dialect ? 4 : undefined} />
+      <span className="mb-4 block text-code-comment md:mb-0">
+        {dialect ? dialect.docClose : BLANK}
+      </span>
+    </div>
+  );
+}
+
+function CodeBody({ dialect, source }: CodeBodyProps) {
   const wide = useMemo(
     () =>
       buildCodeLines(dialect, source, {
@@ -45,73 +165,14 @@ export default function CodeView({
   );
 
   return (
-    <section className="mx-auto max-w-5xl px-3 py-6 md:px-6 md:py-12">
-      <div className="overflow-hidden rounded-xl border border-slate-200 bg-slate-50">
-        <div className="flex border-b border-slate-200 text-xs md:text-[13px]">
-          {LANGS.map((key) => {
-            const active = key === lang;
-            return (
-              <button
-                key={key}
-                type="button"
-                aria-pressed={active}
-                onClick={() => setLang(key)}
-                className={`min-h-[44px] border-r border-slate-200 px-4 md:px-6 border-b-2 ${
-                  active
-                    ? 'border-b-code-prop bg-white text-slate-800'
-                    : 'border-b-transparent text-slate-500 hover:text-slate-800'
-                }`}
-              >
-                {DIALECTS[key].file}
-              </button>
-            );
-          })}
-          <span className="ml-auto hidden items-center px-5 text-slate-500 md:flex">
-            {dialect.label}
-          </span>
-        </div>
-
-        <div className="px-4 pb-8 pt-5 text-[13px] leading-[22px] md:px-0 md:pb-9 md:pt-7 md:text-[15px] md:leading-7">
-          <div className="md:grid md:grid-cols-[3rem_1fr] md:gap-x-5">
-            <Gutter n={1} />
-            <span className="text-code-comment">{dialect.docOpen}</span>
-
-            <Gutter n={2} align="md:self-center" />
-            <span className="flex flex-col gap-3 py-3 md:flex-row md:items-center md:gap-5">
-              <Prefix text={dialect.docPrefix} />
-              <img
-                src={photo}
-                alt="Profile Image"
-                className="h-20 w-20 rounded-full object-cover md:h-24 md:w-24"
-              />
-              <h1 className="text-[44px] font-bold leading-none tracking-tight text-slate-900 md:text-6xl">
-                {name}
-              </h1>
-            </span>
-
-            <Gutter n={3} align="md:self-baseline" />
-            <span className="flex items-baseline pb-3 md:self-baseline">
-              <Prefix text={dialect.docPrefix} />
-              <span className="max-w-3xl font-intro text-[19px] font-medium leading-normal text-slate-900 md:text-[23px]">
-                {intro}
-              </span>
-            </span>
-
-            <Gutter n={4} />
-            <span className="mb-4 block text-code-comment md:mb-0">
-              {dialect.docClose}
-            </span>
-          </div>
-
-          <div className="hidden md:block">
-            <CodeLines lines={wide} numbered />
-          </div>
-          <div className="md:hidden">
-            <CodeLines lines={compact} numbered={false} />
-          </div>
-        </div>
+    <>
+      <div className="hidden md:block">
+        <CodeLines lines={wide} numbered />
       </div>
-    </section>
+      <div className="md:hidden">
+        <CodeLines lines={compact} numbered={false} />
+      </div>
+    </>
   );
 }
 

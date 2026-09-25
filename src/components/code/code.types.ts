@@ -1,5 +1,7 @@
 export type Lang = 'ts' | 'py';
 
+export type View = Lang | 'preview';
+
 export type TokenKind =
   | 'keyword'
   | 'string'
@@ -34,6 +36,7 @@ export interface CodePost {
 
 export interface CodeLink {
   key: string;
+  label: string;
   handle: string;
   url: string;
 }

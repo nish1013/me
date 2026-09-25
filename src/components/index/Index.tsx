@@ -42,6 +42,7 @@ export default function Index() {
       links: socialLinks.map(
         (l): CodeLink => ({
           key: l.text.toLowerCase(),
+          label: l.text,
           handle: handleFromUrl(l.url),
           url: l.url,
         })
