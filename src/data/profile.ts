@@ -1,3 +1,8 @@
+export const name = 'Nish';
+
+export const intro =
+  'Hands-on Lead Software Engineer with end-to-end product ownership, from early ideas through to fully delivered features.';
+
 export const tagline = 'Building AI apps, scalable SaaS, distributed systems & blockchain apps';
 
 export const focusAreas = [
@@ -45,18 +50,6 @@ export const aiSkills = [
   'MCP',
   'AI Scoring System',
   'Rubric',
-];
-
-// Homepage highlights
-export const specialtiesHighlight = [
-  'AI',
-  'Blockchain',
-  'Web3',
-  'Distributed Systems',
-  'Python',
-  'Node.js',
-  'TypeScript',
-  'AWS',
 ];
 
 // Full list for About page

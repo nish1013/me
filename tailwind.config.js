@@ -9,6 +9,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        intro: ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+      },
       colors: {
         white: themed('--c-white'),
         slate: {
@@ -26,6 +29,14 @@ module.exports = {
         amber: {
           50: themed('--c-amber-50'),
           800: themed('--c-amber-800'),
+        },
+        code: {
+          keyword: themed('--c-code-keyword'),
+          string: themed('--c-code-string'),
+          prop: themed('--c-code-prop'),
+          fn: themed('--c-code-fn'),
+          comment: themed('--c-code-comment'),
+          punct: themed('--c-code-punct'),
         },
         band: {
           DEFAULT: themed('--c-band'),

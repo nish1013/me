@@ -24,6 +24,13 @@
   --c-band-chip-hover: 71 85 105;
 
   --c-link: 37 99 235;
+
+  --c-code-keyword: 109 40 217;
+  --c-code-string: 31 122 58;
+  --c-code-prop: 29 78 216;
+  --c-code-fn: 154 91 11;
+  --c-code-comment: 91 98 112;
+  --c-code-punct: 75 82 96;
 }
 
 :root[data-theme='dark'] {
@@ -45,6 +52,13 @@
   --c-amber-800: 252 211 77;
 
   --c-link: 96 165 250;
+
+  --c-code-keyword: 196 167 255;
+  --c-code-string: 159 216 168;
+  --c-code-prop: 140 184 255;
+  --c-code-fn: 242 196 141;
+  --c-code-comment: 148 163 184;
+  --c-code-punct: 174 182 194;
 }
 
 html {
