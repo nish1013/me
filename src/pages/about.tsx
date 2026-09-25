@@ -7,8 +7,8 @@ const AboutPage: React.FC<PageProps> = () => {
   return (
     <Layout>
       <div className="max-w-2xl mx-auto py-12 px-6">
-        <h1 className="text-2xl font-semibold text-slate-800 mb-3">About</h1>
-        <p className="font-intro text-lg font-medium leading-relaxed text-slate-800 mb-2">{intro}</p>
+        <h1 className="text-2xl font-semibold text-slate-800 mb-2">About</h1>
+        <p className="text-slate-700 mb-2">{intro}</p>
         <p className="text-slate-500 mb-8">{tagline}</p>
 
         {/* Focus Areas */}
