@@ -6,7 +6,7 @@ import { companies, intro, name, tagline } from '../../data/profile';
 import { PORTFOLIO } from '../portfolio/data';
 import CodeView from '../code/CodeView';
 import { CodeLink, CodeSource } from '../code/code.types';
-import { decodeEntities } from './posts.util';
+import { decodeEntities, stripEmoji } from './posts.util';
 import { handleFromUrl } from './links.util';
 
 interface LatestPost {
@@ -35,7 +35,7 @@ export default function Index() {
         url: p.uri,
       })),
       posts: allWpPost.nodes.map((p) => ({
-        title: decodeEntities(p.title),
+        title: stripEmoji(decodeEntities(p.title)),
         url: p.uri,
       })),
       allPostsUrl: '/blog',

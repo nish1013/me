@@ -21,3 +21,14 @@ export function decodeEntities(text: string): string {
     }
   );
 }
+
+// Emoji as displayed (incl. ZWJ sequences and flag letters); text-style symbols such as © and ™ are kept.
+const EMOJI =
+  /(?:\p{Extended_Pictographic}\u{FE0F}|\p{Emoji_Presentation})(?:\u{200D}(?:\p{Extended_Pictographic}\u{FE0F}?|\p{Emoji_Presentation}))*\u{FE0F}?/gu;
+
+export function stripEmoji(text: string): string {
+  return text
+    .replace(EMOJI, ' ')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+}
