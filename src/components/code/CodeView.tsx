@@ -13,6 +13,7 @@ interface CodeViewProps {
 
 interface GutterProps {
   n: number;
+  align?: string;
 }
 
 interface PrefixProps {
@@ -75,7 +76,7 @@ export default function CodeView({
             <Gutter n={1} />
             <span className="text-code-comment">{dialect.docOpen}</span>
 
-            <Gutter n={2} />
+            <Gutter n={2} align="md:self-center" />
             <span className="flex flex-col gap-3 py-3 md:flex-row md:items-center md:gap-5">
               <Prefix text={dialect.docPrefix} />
               <img
@@ -88,8 +89,8 @@ export default function CodeView({
               </h1>
             </span>
 
-            <Gutter n={3} />
-            <span className="flex pb-3">
+            <Gutter n={3} align="md:self-baseline" />
+            <span className="flex items-baseline pb-3 md:self-baseline">
               <Prefix text={dialect.docPrefix} />
               <span className="max-w-3xl font-intro text-[19px] font-medium leading-normal text-slate-900 md:text-[23px]">
                 {intro}
@@ -114,9 +115,11 @@ export default function CodeView({
   );
 }
 
-function Gutter({ n }: GutterProps) {
+function Gutter({ n, align = '' }: GutterProps) {
   return (
-    <span className="hidden select-none text-right text-slate-400 md:block">
+    <span
+      className={`hidden select-none text-right text-slate-400 md:block ${align}`}
+    >
       {n}
     </span>
   );
