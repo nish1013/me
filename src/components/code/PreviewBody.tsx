@@ -19,30 +19,6 @@ export default function PreviewBody({ source }: PreviewBodyProps) {
     <div className="flex flex-col gap-9 font-intro text-[15px] leading-relaxed text-slate-800 md:text-base">
       <p className="text-slate-600">{source.tagline}</p>
 
-      <PreviewSection title="Playground">
-        <ul>
-          {source.projects.map((p) => (
-            <li
-              key={p.url}
-              className="border-t border-slate-200 first:border-t-0"
-            >
-              <SiteLink
-                href={p.url}
-                className="group grid gap-x-6 py-3 md:grid-cols-[13rem_1fr_auto]"
-              >
-                <span className="font-medium group-hover:text-code-prop">
-                  {p.name}
-                </span>
-                <span className="text-slate-600">{p.does}</span>
-                <span className="hidden text-slate-400 group-hover:text-code-prop md:inline">
-                  ↗
-                </span>
-              </SiteLink>
-            </li>
-          ))}
-        </ul>
-      </PreviewSection>
-
       <PreviewSection title="Worked with">
         <p>{source.companies.join(' · ')}</p>
       </PreviewSection>
@@ -73,6 +49,30 @@ export default function PreviewBody({ source }: PreviewBodyProps) {
             </SiteLink>
           ))}
         </p>
+      </PreviewSection>
+
+      <PreviewSection title="Playground">
+        <ul>
+          {source.projects.map((p) => (
+            <li
+              key={p.url}
+              className="border-t border-slate-200 first:border-t-0"
+            >
+              <SiteLink
+                href={p.url}
+                className="group grid gap-x-6 py-3 md:grid-cols-[13rem_1fr_auto]"
+              >
+                <span className="font-medium group-hover:text-code-prop">
+                  {p.name}
+                </span>
+                <span className="text-slate-600">{p.does}</span>
+                <span className="hidden text-slate-400 group-hover:text-code-prop md:inline">
+                  ↗
+                </span>
+              </SiteLink>
+            </li>
+          ))}
+        </ul>
       </PreviewSection>
 
       <p className="text-xs text-slate-500">
