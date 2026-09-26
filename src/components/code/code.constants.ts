@@ -84,9 +84,9 @@ const python: Dialect = {
 
 export const DIALECTS: Record<Lang, Dialect> = { ts: typescript, py: python };
 
-export const VIEWS: View[] = ['py', 'ts', 'preview'];
+export const VIEWS: View[] = ['preview', 'py', 'ts'];
 
-export const DEFAULT_VIEW: View = 'py';
+export const DEFAULT_VIEW: View = 'preview';
 
 export const PREVIEW = { tab: 'Preview', label: 'Rendered' };
 
