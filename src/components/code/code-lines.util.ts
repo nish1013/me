@@ -30,6 +30,33 @@ export function buildCodeLines(
   add(end(']'));
   add();
 
+  add(
+    ...dialect.declare(dialect.declarations.writing),
+    punct('['),
+    plain('  '),
+    {
+      text: dialect.commentMark + 'All posts ↗',
+      kind: 'comment',
+      href: source.allPostsUrl,
+    }
+  );
+  for (const post of source.posts)
+    add(plain(indent), str(quote(post.title), post.url), punct(','));
+  add(end(']'));
+  add();
+
+  add(...dialect.declare(dialect.declarations.elsewhere), punct('{'));
+  for (const link of source.links) {
+    add(
+      plain(indent),
+      dialect.key(link.key),
+      punct(': '),
+      str(quote(link.handle), link.url),
+      punct(',')
+    );
+  }
+  add(end('}'));
+  add();
   add(comment(dialect, PLAYGROUND_HINT));
   add(...dialect.declare(dialect.declarations.playground), punct('['));
   const width = Math.max(...source.projects.map((p) => p.name.length));
@@ -70,34 +97,6 @@ export function buildCodeLines(
     }
   }
   add(end(']'));
-  add();
-
-  add(
-    ...dialect.declare(dialect.declarations.writing),
-    punct('['),
-    plain('  '),
-    {
-      text: dialect.commentMark + 'All posts ↗',
-      kind: 'comment',
-      href: source.allPostsUrl,
-    }
-  );
-  for (const post of source.posts)
-    add(plain(indent), str(quote(post.title), post.url), punct(','));
-  add(end(']'));
-  add();
-
-  add(...dialect.declare(dialect.declarations.elsewhere), punct('{'));
-  for (const link of source.links) {
-    add(
-      plain(indent),
-      dialect.key(link.key),
-      punct(': '),
-      str(quote(link.handle), link.url),
-      punct(',')
-    );
-  }
-  add(end('}'));
   add();
 
   add(comment(dialect, 'Built with TypeScript, React & Node.js · '), {
