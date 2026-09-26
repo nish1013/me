@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { graphql, Link, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import photo from '../../images/profile.jpeg';
 import { socialLinks } from '../../data/MainLinks';
 import { companies, intro, name, tagline } from '../../data/profile';
@@ -52,19 +52,7 @@ export default function Index() {
     [allWpPost]
   );
 
-  return (
-    <>
-      <CodeView name={name} intro={intro} photo={photo} source={source} />
-      <div className="mx-auto flex max-w-5xl justify-end px-5 pb-10 md:px-6">
-        <Link
-          to="/journey"
-          className="inline-flex min-h-[44px] items-center text-xs text-slate-500 hover:text-slate-700"
-        >
-          Journey
-        </Link>
-      </div>
-    </>
-  );
+  return <CodeView name={name} intro={intro} photo={photo} source={source} />;
 }
 
 const query = graphql`
