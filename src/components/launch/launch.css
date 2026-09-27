@@ -96,13 +96,13 @@
 }
 .ln-b2 {
   background: radial-gradient(circle, #9b6bff 0%, rgba(155, 107, 255, 0) 68%);
-  top: 40%;
+  top: 80vmax;
   right: -25vmax;
   animation-duration: 28s;
 }
 .ln-b3 {
   background: radial-gradient(circle, #ff7a59 0%, rgba(255, 122, 89, 0) 68%);
-  top: 12%;
+  top: 8vmax;
   left: 55%;
   width: 30vmax;
   height: 30vmax;
