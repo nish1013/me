@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { StaticImage } from 'gatsby-plugin-image';
+import heroPhoto from '../../images/profile-hero.webp';
 import { CodeLanguage } from '../code/code.types';
 import CountUp from './CountUp';
 
@@ -42,15 +42,13 @@ export default function HeroStage({
   return (
     <div className="ln-stage" ref={stage}>
       <div className="ln-ring" />
-      <StaticImage
-        src="../../images/profile.jpeg"
-        alt="Profile Image"
+      <img
         className="ln-photo"
+        src={heroPhoto}
+        alt="Profile Image"
         width={260}
         height={260}
-        layout="constrained"
-        loading="eager"
-        placeholder="none"
+        decoding="async"
       />
       <div className="ln-chip ln-c1" data-depth="18">
         <span className="ln-dot" />
