@@ -1,12 +1,19 @@
 import React from 'react';
-import { CodeProject } from '../code/code.types';
+import { CodeLanguage, CodeProject } from '../code/code.types';
 import SiteLink from '../code/SiteLink';
 
 interface PlaygroundGridProps {
   projects: CodeProject[];
+  languages: CodeLanguage[];
 }
 
-export default function PlaygroundGrid({ projects }: PlaygroundGridProps) {
+export default function PlaygroundGrid({
+  projects,
+  languages,
+}: PlaygroundGridProps) {
+  const toneOf = (name: string) =>
+    languages.find((l) => l.name === name)?.tone ?? 'other';
+
   const trackPointer = (e: React.PointerEvent<HTMLDivElement>) => {
     const card = (e.target as HTMLElement).closest<HTMLElement>('.ln-card');
     if (!card) return;
@@ -29,6 +36,15 @@ export default function PlaygroundGrid({ projects }: PlaygroundGridProps) {
           </span>
           <h3 className="ln-display">{p.name}</h3>
           <p>{p.does}</p>
+          {p.languages.length > 0 && (
+            <span className="ln-card-langs ln-mono">
+              {p.languages.map((name) => (
+                <span key={name} className={`ln-tone-${toneOf(name)}`}>
+                  {name}
+                </span>
+              ))}
+            </span>
+          )}
           <span className="ln-card-url ln-mono">
             {p.url.replace('https://', '').replace(/\/$/, '')} ↗
           </span>

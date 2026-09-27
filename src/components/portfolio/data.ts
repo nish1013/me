@@ -3,6 +3,7 @@ export interface PortfolioModel {
   hint?: string;
   uri: string;
   icon?: string;
+  languages?: string[];
 }
 
 export const PORTFOLIO: PortfolioModel[] = [
@@ -10,36 +11,42 @@ export const PORTFOLIO: PortfolioModel[] = [
     title: 'Actxio',
     hint: 'Documents into actions and dates',
     uri: 'https://actxio.com/',
+    languages: ['TypeScript'],
     icon: '🤖',
   },
   {
     title: 'Risk Engine',
     hint: 'Flags risky financial activity',
     uri: 'https://riskengine.satharasinghe.com/',
+    languages: ['Python'],
     icon: '🚨',
   },
   {
     title: 'Package Pulse',
     hint: 'Dependency health checks',
     uri: 'https://packagepulse.satharasinghe.com/',
+    languages: ['TypeScript', 'Python'],
     icon: '📦',
   },
   {
     title: 'Ledger Match',
     hint: 'Finds mismatched transactions',
     uri: 'https://ledgermatch.satharasinghe.com/',
+    languages: ['TypeScript', 'Python'],
     icon: '⚖️',
   },
   {
     title: 'Interactive Python',
     hint: 'Checks your Python as you learn',
     uri: 'https://nishpy.satharasinghe.com/',
+    languages: ['TypeScript'],
     icon: '🎓',
   },
   {
     title: 'Python Playground',
     hint: 'Learn by running examples inline',
     uri: 'https://python.satharasinghe.com/',
+    languages: ['TypeScript'],
     icon: '🐍',
   },
   {
@@ -58,6 +65,7 @@ export const PORTFOLIO: PortfolioModel[] = [
     title: 'Club Booking',
     hint: 'School clubs with a waiting list',
     uri: 'https://cbooking.satharasinghe.com/',
+    languages: ['TypeScript', 'Python'],
     icon: '🎟️',
   },
 ];
