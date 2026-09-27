@@ -60,12 +60,16 @@ export const PORTFOLIO: PortfolioModel[] = [
     title: 'Web3 Wallet',
     hint: 'Checks a blockchain wallet balance',
     uri: 'https://wallet.satharasinghe.com/',
+    languages: ['TypeScript'],
+    tech: ['Web3', 'NestJS', 'Node.js', 'Tatum SDK', 'Preact'],
     icon: '🪙',
   },
   {
     title: 'Claims API',
     hint: 'Insurance claims processor',
     uri: 'https://claims.satharasinghe.com/',
+    languages: ['TypeScript'],
+    tech: ['NestJS', 'Node.js', 'MongoDB', 'Microservices', 'Swagger'],
     icon: '🧾',
   },
   {
