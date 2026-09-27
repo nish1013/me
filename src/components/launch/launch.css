@@ -37,7 +37,7 @@
   --ln-muted: #9aa3b5;
   --ln-line: rgba(255, 255, 255, 0.09);
   --ln-card: rgba(255, 255, 255, 0.035);
-  --ln-chip: rgba(16, 18, 28, 0.72);
+  --ln-chip: rgba(16, 18, 28, 0.9);
   --ln-blob: 0.38;
   --ln-stroke: rgba(255, 255, 255, 0.35);
   --ln-accent: #9b6bff;
@@ -85,24 +85,24 @@
   width: 60vmax;
   height: 60vmax;
   border-radius: 50%;
-  filter: blur(90px);
   opacity: var(--ln-blob);
+  will-change: transform;
   animation: ln-drift 22s ease-in-out infinite alternate;
 }
 .ln-b1 {
-  background: #4f7cff;
+  background: radial-gradient(circle, #4f7cff 0%, rgba(79, 124, 255, 0) 68%);
   top: -25vmax;
   left: -15vmax;
 }
 .ln-b2 {
-  background: #9b6bff;
-  top: 40%;
+  background: radial-gradient(circle, #9b6bff 0%, rgba(155, 107, 255, 0) 68%);
+  top: 80vmax;
   right: -25vmax;
   animation-duration: 28s;
 }
 .ln-b3 {
-  background: #ff7a59;
-  top: 12%;
+  background: radial-gradient(circle, #ff7a59 0%, rgba(255, 122, 89, 0) 68%);
+  top: 8vmax;
   left: 55%;
   width: 30vmax;
   height: 30vmax;
@@ -176,7 +176,7 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: ln-sheen 7s ease-in-out infinite;
+  animation: ln-sheen 7s ease-in-out 2;
 }
 @keyframes ln-sheen {
   0%,
@@ -225,14 +225,24 @@
   transform: translateY(-2px);
 }
 .ln-btn-primary {
+  position: relative;
   border: 0;
   color: #0b0c12 !important;
   background: linear-gradient(90deg, #8fb0ff, #c6a8ff);
+}
+.ln-btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 34px 4px rgba(155, 107, 255, 0.45);
+  opacity: 0;
+  pointer-events: none;
   animation: ln-glow 2.8s ease-in-out infinite;
 }
 @keyframes ln-glow {
   50% {
-    box-shadow: 0 0 34px 4px rgba(155, 107, 255, 0.45);
+    opacity: 1;
   }
 }
 
@@ -255,6 +265,7 @@
   background: conic-gradient(from 0deg, #4f7cff, #9b6bff, #ff7a59, #4f7cff);
   filter: blur(22px);
   opacity: 0.55;
+  will-change: transform;
   animation: ln-spin 12s linear infinite;
 }
 @keyframes ln-spin {
@@ -267,6 +278,7 @@
   width: 260px;
   height: 260px;
   border-radius: 50%;
+  overflow: hidden;
   object-fit: cover;
   border: 3px solid rgba(255, 255, 255, 0.4);
 }
@@ -289,7 +301,6 @@
   border-radius: 14px;
   border: 1px solid var(--ln-line);
   background: var(--ln-chip);
-  backdrop-filter: blur(10px);
   font-size: 13px;
   white-space: nowrap;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
@@ -703,6 +714,15 @@
   padding: 28px 0 8px;
   color: var(--ln-muted);
   font-size: 13px;
+}
+
+/* hero animations rest while the hero is off screen */
+.ln-paused .ln-blob,
+.ln-paused .ln-ring,
+.ln-paused .ln-chip,
+.ln-paused .ln-ticker span,
+.ln-paused .ln-btn-primary::after {
+  animation-play-state: paused;
 }
 
 /* reveal only once JS is running, so content stays visible without it */

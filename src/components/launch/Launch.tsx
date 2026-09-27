@@ -5,13 +5,13 @@ import CompanyBand from './CompanyBand';
 import HeroStage from './HeroStage';
 import PlaygroundGrid from './PlaygroundGrid';
 import StackSection from './StackSection';
+import { usePauseOffscreen } from './usePauseOffscreen';
 import { useReveal } from './useReveal';
 import './launch.css';
 
 interface LaunchProps {
   name: string;
   intro: string;
-  photo: string;
   source: CodeSource;
   heroCompanies: string[];
   heroTools: string[];
@@ -22,7 +22,6 @@ interface LaunchProps {
 export default function Launch({
   name,
   intro,
-  photo,
   source,
   heroCompanies,
   heroTools,
@@ -30,7 +29,9 @@ export default function Launch({
   onViewCode,
 }: LaunchProps) {
   const root = useRef<HTMLDivElement>(null);
+  const hero = useRef<HTMLDivElement>(null);
   useReveal(root);
+  usePauseOffscreen(root, hero);
   const ticker = `${tickerItems.join(' · ')} · `;
 
   return (
@@ -42,7 +43,7 @@ export default function Launch({
       </div>
 
       <div className="ln-wrap">
-        <div className="ln-hero">
+        <div className="ln-hero" ref={hero}>
           <div>
             <div className="ln-ticker ln-mono">
               <span>{ticker.repeat(2)}</span>
@@ -65,7 +66,6 @@ export default function Launch({
             </div>
           </div>
           <HeroStage
-            photo={photo}
             playgroundCount={source.projects.length}
             languages={source.languages}
             companies={heroCompanies}

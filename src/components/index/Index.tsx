@@ -87,7 +87,6 @@ export default function Index() {
     <Launch
       name={name}
       intro={intro}
-      photo={photo}
       source={source}
       heroCompanies={heroCompanies}
       heroTools={heroTools}
