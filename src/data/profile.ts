@@ -1,3 +1,14 @@
+export interface StackLanguage {
+  name: string;
+  tone: 'py' | 'ts' | 'go';
+  uses: string;
+}
+
+export interface StackGroup {
+  title: string;
+  items: string[];
+}
+
 export const name = 'Nish';
 
 export const intro =
@@ -23,47 +34,87 @@ export const companies = [
   'Telefonica',
 ];
 
-export const skills = [
-  'TypeScript',
-  'React.js',
-  'Node.js',
-  'Python',
-  'FastAPI',
-  'Pydantic',
-  'LangChain',
-  'LangSmith',
-  'Go',
-  'AWS',
-  'Azure',
-  'Kubernetes',
-  'MongoDB',
-  'PostgreSQL',
+export const tickerItems = [
+  'AI apps',
+  'Scalable SaaS',
+  'Distributed systems',
+  'Blockchain apps',
 ];
 
-// AI & LLM capabilities (About page)
-export const aiSkills = [
-  'AI',
-  'LLM',
-  'Generative AI',
-  'Prompt Engineering',
-  'RAG',
-  'MCP',
-  'AI Scoring System',
-  'Rubric',
+export const heroCompanies = ['Visa', 'IBM', 'M&S'];
+
+export const heroTools = ['Node.js', 'FastAPI', 'AWS'];
+
+export const primaryLanguages: StackLanguage[] = [
+  {
+    name: 'Python',
+    tone: 'py',
+    uses: 'FastAPI · Pydantic · LangChain · data pipelines',
+  },
+  {
+    name: 'TypeScript',
+    tone: 'ts',
+    uses: 'Node.js · NestJS · React · Next.js',
+  },
+  { name: 'Go', tone: 'go', uses: 'concurrent, high-volume services' },
 ];
 
-// Full list for About page
-export const specialties = [
-  'Blockchain',
-  'Web3',
-  'AWS',
-  'Azure',
-  'TypeScript',
-  'React',
-  'Node.js',
-  'Distributed Systems',
-  'Data Intensive Apps',
-  'Kubernetes',
-  'System Design',
-  'Gamification',
+export const stackGroups: StackGroup[] = [
+  {
+    title: 'AI & data',
+    items: [
+      'LLMs',
+      'LangChain',
+      'LangSmith',
+      'RAG',
+      'MCP',
+      'Prompt engineering',
+      'LLM data pipelines',
+      'Matching & ranking',
+      'Data enrichment',
+    ],
+  },
+  {
+    title: 'Distributed systems',
+    items: [
+      'High-volume transactions',
+      'Concurrency',
+      'Event-driven',
+      'Background workers',
+      'Failure recovery',
+    ],
+  },
+  {
+    title: 'Cloud & infra',
+    items: [
+      'AWS',
+      'Kubernetes',
+      'AWS Step Functions',
+      'SQS',
+      'SNS',
+      'Azure',
+      'Railway',
+      'GitHub Actions',
+      'CI/CD',
+    ],
+  },
+  {
+    title: 'Messaging & design',
+    items: [
+      'RabbitMQ',
+      'Kafka',
+      'Redis',
+      'Microservices',
+      'CQRS',
+      'DDD',
+      'GraphQL',
+      'REST',
+    ],
+  },
+  { title: 'Data stores', items: ['PostgreSQL', 'MySQL', 'MongoDB'] },
+  { title: 'Also', items: ['Express.js', 'Java'] },
+  {
+    title: 'AI-assisted dev',
+    items: ['Claude Code', 'Cursor', 'GitHub Copilot'],
+  },
 ];

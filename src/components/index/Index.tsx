@@ -1,11 +1,22 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import photo from '../../images/profile.jpeg';
 import { socialLinks } from '../../data/MainLinks';
-import { companies, intro, name, tagline } from '../../data/profile';
+import {
+  companies,
+  heroCompanies,
+  heroTools,
+  intro,
+  name,
+  primaryLanguages,
+  stackGroups,
+  tagline,
+  tickerItems,
+} from '../../data/profile';
 import { PORTFOLIO } from '../portfolio/data';
 import CodeView from '../code/CodeView';
 import { CodeLink, CodeSource } from '../code/code.types';
+import Launch from '../launch/Launch';
 import { decodeEntities, stripEmoji } from './posts.util';
 import { handleFromUrl } from './links.util';
 
@@ -24,11 +35,14 @@ interface LatestPostsQuery {
 
 export default function Index() {
   const { allWpPost } = useStaticQuery<LatestPostsQuery>(query);
+  const [asCode, setAsCode] = useState(false);
 
   const source = useMemo<CodeSource>(
     () => ({
       tagline,
       companies,
+      languages: primaryLanguages,
+      stack: stackGroups,
       projects: PORTFOLIO.map((p) => ({
         name: p.title,
         does: p.hint ?? '',
@@ -52,7 +66,35 @@ export default function Index() {
     [allWpPost]
   );
 
-  return <CodeView name={name} intro={intro} photo={photo} source={source} />;
+  const show = (code: boolean) => {
+    setAsCode(code);
+    window.scrollTo(0, 0);
+  };
+
+  if (asCode) {
+    return (
+      <CodeView
+        name={name}
+        intro={intro}
+        photo={photo}
+        source={source}
+        onClose={() => show(false)}
+      />
+    );
+  }
+
+  return (
+    <Launch
+      name={name}
+      intro={intro}
+      photo={photo}
+      source={source}
+      heroCompanies={heroCompanies}
+      heroTools={heroTools}
+      tickerItems={tickerItems}
+      onViewCode={() => show(true)}
+    />
+  );
 }
 
 const query = graphql`

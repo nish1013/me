@@ -1,7 +1,14 @@
 import * as React from 'react';
 import type { HeadFC, PageProps } from 'gatsby';
 import Layout from '../components/layout/Layout';
-import { intro, tagline, focusAreas, companies, skills, aiSkills } from '../data/profile';
+import {
+  intro,
+  tagline,
+  focusAreas,
+  companies,
+  primaryLanguages,
+  stackGroups,
+} from '../data/profile';
 
 const AboutPage: React.FC<PageProps> = () => {
   return (
@@ -46,36 +53,36 @@ const AboutPage: React.FC<PageProps> = () => {
           </div>
         </section>
 
-        {/* AI & LLM */}
-        <section className="mb-8">
+        {/* Stack */}
+        <section>
           <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">
-            AI & LLM
+            Stack
           </h2>
-          <div className="flex flex-wrap gap-2">
-            {aiSkills.map((skill, i) => (
+          <div className="flex flex-wrap gap-2 mb-5">
+            {primaryLanguages.map((l) => (
               <span
-                key={i}
+                key={l.name}
                 className="px-3 py-1.5 bg-band text-band-ink text-sm rounded-md"
               >
-                {skill}
+                {l.name}
               </span>
             ))}
           </div>
-        </section>
-
-        {/* Skills */}
-        <section>
-          <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">
-            Tech Stack
-          </h2>
-          <div className="flex flex-wrap gap-2">
-            {skills.map((skill, i) => (
-              <span
-                key={i}
-                className="px-3 py-1.5 border border-slate-300 text-slate-600 text-sm rounded-md"
-              >
-                {skill}
-              </span>
+          <div className="space-y-4">
+            {stackGroups.map((g) => (
+              <div key={g.title}>
+                <h3 className="text-xs text-slate-500 mb-2">{g.title}</h3>
+                <div className="flex flex-wrap gap-2">
+                  {g.items.map((item) => (
+                    <span
+                      key={item}
+                      className="px-3 py-1.5 border border-slate-300 text-slate-600 text-sm rounded-md"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </section>
