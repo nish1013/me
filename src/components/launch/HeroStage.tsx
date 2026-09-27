@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
+import { StaticImage } from 'gatsby-plugin-image';
 import { CodeLanguage } from '../code/code.types';
 import CountUp from './CountUp';
 
 interface HeroStageProps {
-  photo: string;
   playgroundCount: number;
   languages: CodeLanguage[];
   companies: string[];
@@ -11,7 +11,6 @@ interface HeroStageProps {
 }
 
 export default function HeroStage({
-  photo,
   playgroundCount,
   languages,
   companies,
@@ -43,7 +42,16 @@ export default function HeroStage({
   return (
     <div className="ln-stage" ref={stage}>
       <div className="ln-ring" />
-      <img className="ln-photo" src={photo} alt="Profile Image" />
+      <StaticImage
+        src="../../images/profile.jpeg"
+        alt="Profile Image"
+        className="ln-photo"
+        width={260}
+        height={260}
+        layout="constrained"
+        loading="eager"
+        placeholder="none"
+      />
       <div className="ln-chip ln-c1" data-depth="18">
         <span className="ln-dot" />
         <CountUp to={playgroundCount} /> playground apps
