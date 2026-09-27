@@ -5,10 +5,10 @@ const applyTheme = `
   try {
     var saved = localStorage.getItem('nish-theme');
     var wantsDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    var dark = saved === 'dark' || ((!saved || saved === 'auto') && wantsDark);
-    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    var light = saved === 'light' || (saved === 'auto' && !wantsDark);
+    document.documentElement.setAttribute('data-theme', light ? 'light' : 'dark');
   } catch (e) {
-    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.setAttribute('data-theme', 'dark');
   }
 })();
 `;
