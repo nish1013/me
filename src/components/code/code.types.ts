@@ -1,7 +1,5 @@
 export type Lang = 'ts' | 'py';
 
-export type View = Lang | 'preview';
-
 export type TokenKind =
   | 'keyword'
   | 'string'
@@ -41,9 +39,22 @@ export interface CodeLink {
   url: string;
 }
 
+export interface CodeLanguage {
+  name: string;
+  tone: 'py' | 'ts' | 'go';
+  uses: string;
+}
+
+export interface CodeStackGroup {
+  title: string;
+  items: string[];
+}
+
 export interface CodeSource {
   tagline: string;
   companies: string[];
+  languages: CodeLanguage[];
+  stack: CodeStackGroup[];
   projects: CodeProject[];
   posts: CodePost[];
   allPostsUrl: string;
@@ -85,6 +96,7 @@ export interface Declaration {
 export interface DialectDeclarations {
   building: Declaration;
   workedWith: Declaration;
+  stack: Declaration;
   playground: Declaration;
   writing: Declaration;
   elsewhere: Declaration;

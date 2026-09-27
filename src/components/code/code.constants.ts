@@ -1,4 +1,4 @@
-import { Dialect, Lang, Token, TokenKind, View } from './code.types';
+import { Dialect, Lang, Token, TokenKind } from './code.types';
 
 export const TOKEN_CLASS: Record<TokenKind, string> = {
   keyword: 'text-code-keyword',
@@ -41,6 +41,7 @@ const typescript: Dialect = {
   declarations: {
     building: { name: 'building' },
     workedWith: { name: 'workedWith' },
+    stack: { name: 'stack' },
     playground: { name: 'playground' },
     writing: { name: 'writing' },
     elsewhere: { name: 'elsewhere' },
@@ -76,6 +77,7 @@ const python: Dialect = {
   declarations: {
     building: { name: 'building', type: 'str' },
     workedWith: { name: 'worked_with', type: 'list[str]' },
+    stack: { name: 'stack', type: 'dict[str, list[str]]' },
     playground: { name: 'playground', type: 'list[Project]' },
     writing: { name: 'writing', type: 'list[str]' },
     elsewhere: { name: 'elsewhere', type: 'dict[str, str]' },
@@ -84,10 +86,8 @@ const python: Dialect = {
 
 export const DIALECTS: Record<Lang, Dialect> = { ts: typescript, py: python };
 
-export const VIEWS: View[] = ['preview', 'py', 'ts'];
+export const LANGS: Lang[] = ['py', 'ts'];
 
-export const DEFAULT_VIEW: View = 'preview';
+export const DEFAULT_LANG: Lang = 'py';
 
-export const PREVIEW = { tab: 'Preview', label: 'Rendered' };
-
-export const PLAYGROUND_HINT = 'Live products. Click a name to open it.';
+export const PLAYGROUND_HINT = 'Playground. Click a name to open it.';

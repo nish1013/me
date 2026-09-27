@@ -30,6 +30,26 @@ export function buildCodeLines(
   add(end(']'));
   add();
 
+  add(...dialect.declare(dialect.declarations.stack), punct('{'));
+  const stackRows = [
+    { title: 'Languages', items: source.languages.map((l) => l.name) },
+    ...source.stack,
+  ];
+  for (const group of stackRows) {
+    add(
+      plain(indent),
+      str(quote(group.title)),
+      punct(': ['),
+      ...group.items.flatMap((item, i) => [
+        str(quote(item)),
+        punct(i < group.items.length - 1 ? ', ' : ''),
+      ]),
+      punct('],')
+    );
+  }
+  add(end('}'));
+  add();
+
   add(
     ...dialect.declare(dialect.declarations.writing),
     punct('['),

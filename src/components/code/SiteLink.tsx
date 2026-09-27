@@ -4,13 +4,19 @@ import { Link } from 'gatsby';
 interface SiteLinkProps {
   href: string;
   className?: string;
+  style?: React.CSSProperties;
   children: React.ReactNode;
 }
 
-export default function SiteLink({ href, className, children }: SiteLinkProps) {
+export default function SiteLink({
+  href,
+  className,
+  style,
+  children,
+}: SiteLinkProps) {
   if (href.startsWith('/')) {
     return (
-      <Link to={href} className={className}>
+      <Link to={href} className={className} style={style}>
         {children}
       </Link>
     );
@@ -19,6 +25,7 @@ export default function SiteLink({ href, className, children }: SiteLinkProps) {
     <a
       href={href}
       className={className}
+      style={style}
       target="_blank"
       rel="noopener noreferrer"
     >
