@@ -114,7 +114,10 @@ export default function Launch({
           <h2 className="ln-h2 ln-display ln-reveal">
             Playground. Click one to open it.
           </h2>
-          <PlaygroundGrid projects={source.projects} />
+          <PlaygroundGrid
+            projects={source.projects}
+            languages={source.languages}
+          />
         </section>
 
         <p className="ln-foot ln-mono">
