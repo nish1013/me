@@ -36,10 +36,15 @@ export default function PlaygroundGrid({
           </span>
           <h3 className="ln-display">{p.name}</h3>
           <p>{p.does}</p>
-          {p.languages.length > 0 && (
+          {p.languages.length + p.tech.length > 0 && (
             <span className="ln-card-langs ln-mono">
               {p.languages.map((name) => (
                 <span key={name} className={`ln-tone-${toneOf(name)}`}>
+                  {name}
+                </span>
+              ))}
+              {p.tech.map((name) => (
+                <span key={name} className="ln-tone-other">
                   {name}
                 </span>
               ))}

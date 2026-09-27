@@ -48,6 +48,7 @@ export default function Index() {
         does: p.hint ?? '',
         url: p.uri,
         languages: p.languages ?? [],
+        tech: p.tech ?? [],
       })),
       posts: allWpPost.nodes.map((p) => ({
         title: stripEmoji(decodeEntities(p.title)),

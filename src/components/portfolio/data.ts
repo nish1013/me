@@ -4,6 +4,7 @@ export interface PortfolioModel {
   uri: string;
   icon?: string;
   languages?: string[];
+  tech?: string[];
 }
 
 export const PORTFOLIO: PortfolioModel[] = [
@@ -12,6 +13,7 @@ export const PORTFOLIO: PortfolioModel[] = [
     hint: 'Documents into actions and dates',
     uri: 'https://actxio.com/',
     languages: ['TypeScript'],
+    tech: ['Next.js', 'Node.js', 'LLM (OpenAI)', 'Supabase'],
     icon: '🤖',
   },
   {
@@ -19,6 +21,7 @@ export const PORTFOLIO: PortfolioModel[] = [
     hint: 'Flags risky financial activity',
     uri: 'https://riskengine.satharasinghe.com/',
     languages: ['Python'],
+    tech: ['FastAPI', 'PostgreSQL'],
     icon: '🚨',
   },
   {
@@ -26,6 +29,7 @@ export const PORTFOLIO: PortfolioModel[] = [
     hint: 'Dependency health checks',
     uri: 'https://packagepulse.satharasinghe.com/',
     languages: ['TypeScript', 'Python'],
+    tech: ['Next.js', 'Node.js', 'FastAPI', 'SSE streaming'],
     icon: '📦',
   },
   {
@@ -33,6 +37,7 @@ export const PORTFOLIO: PortfolioModel[] = [
     hint: 'Finds mismatched transactions',
     uri: 'https://ledgermatch.satharasinghe.com/',
     languages: ['TypeScript', 'Python'],
+    tech: ['Next.js', 'FastAPI'],
     icon: '⚖️',
   },
   {
@@ -40,6 +45,7 @@ export const PORTFOLIO: PortfolioModel[] = [
     hint: 'Checks your Python as you learn',
     uri: 'https://nishpy.satharasinghe.com/',
     languages: ['TypeScript'],
+    tech: ['React', 'Pyodide'],
     icon: '🎓',
   },
   {
@@ -47,6 +53,7 @@ export const PORTFOLIO: PortfolioModel[] = [
     hint: 'Learn by running examples inline',
     uri: 'https://python.satharasinghe.com/',
     languages: ['TypeScript'],
+    tech: ['Next.js', 'Pyodide'],
     icon: '🐍',
   },
   {
@@ -66,6 +73,7 @@ export const PORTFOLIO: PortfolioModel[] = [
     hint: 'School clubs with a waiting list',
     uri: 'https://cbooking.satharasinghe.com/',
     languages: ['TypeScript', 'Python'],
+    tech: ['Next.js', 'Node.js', 'FastAPI', 'PostgreSQL'],
     icon: '🎟️',
   },
 ];
