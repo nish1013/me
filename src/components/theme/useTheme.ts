@@ -4,7 +4,9 @@ export const THEME_KEY = 'nish-theme';
 
 export type ThemePreference = 'auto' | 'light' | 'dark';
 
-export const THEME_ORDER: ThemePreference[] = ['auto', 'light', 'dark'];
+export const THEME_ORDER: ThemePreference[] = ['dark', 'light', 'auto'];
+
+export const DEFAULT_THEME: ThemePreference = 'dark';
 
 const DARK = '(prefers-color-scheme: dark)';
 
@@ -13,9 +15,9 @@ function readPreference(): ThemePreference {
     const saved = localStorage.getItem(THEME_KEY);
     if (saved === 'light' || saved === 'dark' || saved === 'auto') return saved;
   } catch {
-    /* storage blocked; auto is a fine answer */
+    /* storage blocked; the default still applies */
   }
-  return 'auto';
+  return DEFAULT_THEME;
 }
 
 function resolve(preference: ThemePreference): 'light' | 'dark' {
@@ -23,12 +25,17 @@ function resolve(preference: ThemePreference): 'light' | 'dark' {
   return window.matchMedia(DARK).matches ? 'dark' : 'light';
 }
 
+export function nextPreference(preference: ThemePreference): ThemePreference {
+  const at = THEME_ORDER.indexOf(preference);
+  return THEME_ORDER[(at + 1) % THEME_ORDER.length];
+}
+
 function paint(preference: ThemePreference): void {
   document.documentElement.setAttribute('data-theme', resolve(preference));
 }
 
 export function useTheme() {
-  const [preference, setPreference] = useState<ThemePreference>('auto');
+  const [preference, setPreference] = useState<ThemePreference>(DEFAULT_THEME);
 
   useEffect(() => {
     const saved = readPreference();
@@ -55,9 +62,7 @@ export function useTheme() {
   }, []);
 
   const cycle = useCallback(() => {
-    const at = THEME_ORDER.indexOf(preference);
-    const next = THEME_ORDER[(at + 1) % THEME_ORDER.length];
-    choose(next);
+    choose(nextPreference(preference));
   }, [preference, choose]);
 
   return { preference, cycle };

@@ -1,16 +1,10 @@
 import React from 'react';
-import { useTheme, type ThemePreference } from './useTheme';
+import { nextPreference, useTheme, type ThemePreference } from './useTheme';
 
 const LABEL: Record<ThemePreference, string> = {
   auto: 'match the system',
   light: 'day',
   dark: 'night',
-};
-
-const NEXT: Record<ThemePreference, ThemePreference> = {
-  auto: 'light',
-  light: 'dark',
-  dark: 'auto',
 };
 
 function Icon({ preference }: { preference: ThemePreference }) {
@@ -56,7 +50,7 @@ export default function ThemeControl() {
       type="button"
       onClick={cycle}
       title={`Appearance: ${LABEL[preference]}`}
-      aria-label={`Appearance: ${LABEL[preference]}. Switch to ${LABEL[NEXT[preference]]}.`}
+      aria-label={`Appearance: ${LABEL[preference]}. Switch to ${LABEL[nextPreference(preference)]}.`}
       className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-slate-400 hover:bg-slate-100 hover:text-slate-700"
     >
       <Icon preference={preference} />
