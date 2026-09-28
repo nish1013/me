@@ -41,6 +41,14 @@ export const PORTFOLIO: PortfolioModel[] = [
     icon: '🧾',
   },
   {
+    title: 'Cinema Booking',
+    hint: 'Holds your seats on a timer',
+    uri: 'https://cinemabooking.satharasinghe.com/',
+    languages: ['TypeScript', 'Python'],
+    tech: ['Next.js', 'FastAPI', 'PostgreSQL'],
+    icon: '🎬',
+  },
+  {
     title: 'Club Booking',
     hint: 'School clubs with a waiting list',
     uri: 'https://cbooking.satharasinghe.com/',
