@@ -47,6 +47,7 @@ export default function Index() {
         name: p.title,
         does: p.hint ?? '',
         url: p.uri,
+        features: p.features ?? [],
         languages: p.languages ?? [],
         tech: p.tech ?? [],
       })),
