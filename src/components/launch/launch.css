@@ -8,6 +8,8 @@
   --ln-blob: 0.22;
   --ln-stroke: rgba(13, 15, 22, 0.28);
   --ln-accent: #6a4bff;
+  --ln-ai-from: #6d28d9;
+  --ln-ai-to: #be185d;
   --ln-link: #2f5bd3;
   --ln-py: #a16207;
   --ln-py-bg: rgba(250, 204, 21, 0.2);
@@ -716,8 +718,8 @@
   font-weight: 500;
 }
 .ln-tone-feature {
-  background: color-mix(in srgb, var(--ln-accent) 16%, transparent);
-  color: var(--ln-accent);
+  background: linear-gradient(135deg, var(--ln-ai-from), var(--ln-ai-to));
+  color: #fff;
 }
 .ln-tone-other {
   border: 1px solid var(--ln-line);
