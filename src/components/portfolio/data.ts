@@ -3,6 +3,7 @@ export interface PortfolioModel {
   hint?: string;
   uri: string;
   icon?: string;
+  features?: string[];
   languages?: string[];
   tech?: string[];
 }
@@ -10,8 +11,9 @@ export interface PortfolioModel {
 export const PORTFOLIO: PortfolioModel[] = [
   {
     title: 'Actxio',
-    hint: 'Documents into actions and dates',
+    hint: 'Letters in, deadlines out',
     uri: 'https://actxio.com/',
+    features: ['AI agent', 'MCP'],
     languages: ['TypeScript'],
     tech: ['Next.js', 'Node.js', 'LLM (OpenAI)', 'Supabase'],
     icon: '🤖',

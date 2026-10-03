@@ -715,6 +715,10 @@
   font-size: 12px;
   font-weight: 500;
 }
+.ln-tone-feature {
+  background: color-mix(in srgb, var(--ln-accent) 16%, transparent);
+  color: var(--ln-accent);
+}
 .ln-tone-other {
   border: 1px solid var(--ln-line);
   color: var(--ln-muted);

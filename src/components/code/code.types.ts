@@ -25,6 +25,7 @@ export interface CodeProject {
   name: string;
   does: string;
   url: string;
+  features: string[];
   languages: string[];
   tech: string[];
 }
