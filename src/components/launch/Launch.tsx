@@ -1,9 +1,12 @@
 import React, { useRef } from 'react';
 import { CodeSource } from '../code/code.types';
 import SiteLink from '../code/SiteLink';
+import { useRecentWork } from '../github/useRecentWork';
+import ActivityPill from './ActivityPill';
 import CompanyBand from './CompanyBand';
 import HeroStage from './HeroStage';
 import PlaygroundGrid from './PlaygroundGrid';
+import RecentWorkSection from './RecentWorkSection';
 import StackSection from './StackSection';
 import { usePauseOffscreen } from './usePauseOffscreen';
 import { useReveal } from './useReveal';
@@ -32,6 +35,7 @@ export default function Launch({
   const hero = useRef<HTMLDivElement>(null);
   useReveal(root);
   usePauseOffscreen(root, hero);
+  const recent = useRecentWork();
   const ticker = `${tickerItems.join(' · ')} · `;
 
   return (
@@ -49,12 +53,15 @@ export default function Launch({
               <span>{ticker.repeat(2)}</span>
               <span aria-hidden="true">{ticker.repeat(2)}</span>
             </div>
+            {recent.status === 'ready' && recent.activity && (
+              <ActivityPill activity={recent.activity} />
+            )}
             <h1 className="ln-h1 ln-display">{name}</h1>
             <p className="ln-intro">{intro}</p>
             <p className="ln-tagline">{source.tagline}</p>
             <div className="ln-ctas">
-              <a className="ln-btn ln-btn-primary" href="#playground">
-                See the playground ↓
+              <a className="ln-btn ln-btn-primary" href="#recent">
+                See recent work ↓
               </a>
               <button
                 type="button"
@@ -77,6 +84,8 @@ export default function Launch({
       <CompanyBand companies={source.companies} />
 
       <div className="ln-wrap">
+        <RecentWorkSection state={recent} limit={3} allUrl="/portfolio" />
+
         <StackSection languages={source.languages} groups={source.stack} />
 
         <section className="ln-section">
