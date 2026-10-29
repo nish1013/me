@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { GitHubRepo, RecentWorkState } from './github.types';
 import { toRecentWork } from './github.util';
-import { EXCLUDED_REPOS, GITHUB_USER, RECENT_DAYS, SHOWCASE } from './data';
+import { EXCLUDED_REPOS, GITHUB_USER, RECENT_COUNT, SHOWCASE } from './data';
 
 const REPOS_URL = `https://api.github.com/users/${GITHUB_USER}/repos?sort=pushed&per_page=100`;
 
@@ -24,7 +24,7 @@ export function useRecentWork(): RecentWorkState {
           status: 'ready',
           ...toRecentWork(repos, {
             now: new Date(),
-            days: RECENT_DAYS,
+            count: RECENT_COUNT,
             exclude: EXCLUDED_REPOS,
             showcase: SHOWCASE,
           }),

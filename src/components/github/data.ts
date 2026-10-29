@@ -4,7 +4,7 @@ export const GITHUB_USER = 'nish1013';
 
 export const GITHUB_PROFILE_URL = `https://github.com/${GITHUB_USER}`;
 
-export const RECENT_DAYS = 30;
+export const RECENT_COUNT = 6;
 
 export const EXCLUDED_REPOS = ['me', GITHUB_USER];
 

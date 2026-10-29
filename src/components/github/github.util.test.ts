@@ -12,7 +12,7 @@ const NOW = new Date('2026-10-29T12:00:00Z');
 
 const OPTIONS: RecentWorkOptions = {
   now: NOW,
-  days: 30,
+  count: 4,
   exclude: ['me'],
   showcase: [
     { repo: 'risk-segmenter', tradeoff: 'Outbox, not publish-after-commit.' },
@@ -51,21 +51,24 @@ test('showcase repos come first in showcase order, the rest by newest push', () 
   );
 });
 
-test('a showcase repo outside the window is not shown', () => {
+test('keeps the newest pushes up to the count, so an older showcase repo drops out', () => {
   const { repos } = toRecentWork(
     [
       repo({ name: 'risk-segmenter', pushed_at: '2026-08-01T10:00:00Z' }),
-      repo({ name: 'fresh' }),
+      repo({ name: 'a', pushed_at: '2026-10-29T10:00:00Z' }),
+      repo({ name: 'b', pushed_at: '2026-10-28T10:00:00Z' }),
+      repo({ name: 'c', pushed_at: '2026-10-27T10:00:00Z' }),
+      repo({ name: 'd', pushed_at: '2026-10-26T10:00:00Z' }),
     ],
     OPTIONS
   );
   assert.deepEqual(
     repos.map((r) => r.name),
-    ['fresh']
+    ['a', 'b', 'c', 'd']
   );
 });
 
-test('keeps own public repos pushed in the window, newest first', () => {
+test('keeps own public repos, newest first', () => {
   const { repos } = toRecentWork(
     [
       repo({ name: 'older', pushed_at: '2026-10-15T09:00:00Z' }),
@@ -96,18 +99,19 @@ test('drops forks, archived, private and excluded repos', () => {
   );
 });
 
-test('the window is inclusive at exactly 30 days and drops one second more', () => {
-  const { repos } = toRecentWork(
+test('a quiet month still shows the latest work and its last push', () => {
+  const { repos, activity } = toRecentWork(
     [
-      repo({ name: 'edge', pushed_at: '2026-09-29T12:00:00Z' }),
-      repo({ name: 'gone', pushed_at: '2026-09-29T11:59:59Z' }),
+      repo({ name: 'old', pushed_at: '2026-06-01T12:00:00Z' }),
+      repo({ name: 'older', pushed_at: '2025-01-01T12:00:00Z' }),
     ],
     OPTIONS
   );
   assert.deepEqual(
     repos.map((r) => r.name),
-    ['edge']
+    ['old', 'older']
   );
+  assert.equal(activity?.lastPushLabel, '150 days ago');
 });
 
 test('a repo with a trade-off links to its decisions doc on the default branch', () => {
@@ -136,7 +140,7 @@ test('a null description and missing topics become empty values', () => {
   assert.deepEqual(repos[0].topics, []);
 });
 
-test('activity counts the recent repos and labels the newest push', () => {
+test('activity labels the newest push', () => {
   const { activity } = toRecentWork(
     [
       repo({ name: 'a', pushed_at: '2026-10-27T09:00:00Z' }),
@@ -146,7 +150,6 @@ test('activity counts the recent repos and labels the newest push', () => {
     OPTIONS
   );
   assert.equal(activity?.lastPushLabel, 'yesterday');
-  assert.equal(activity?.repoCount, 2);
 });
 
 test('activity follows push dates, not showcase order, and keeps the latest 3', () => {
@@ -163,14 +166,22 @@ test('activity follows push dates, not showcase order, and keeps the latest 3', 
   assert.equal(activity?.lastPushLabel, 'today');
   assert.deepEqual(activity?.latest, [
     { title: 'A', url: 'https://github.com/nish1013/a', pushedLabel: 'today' },
-    { title: 'B', url: 'https://github.com/nish1013/b', pushedLabel: 'yesterday' },
-    { title: 'C', url: 'https://github.com/nish1013/c', pushedLabel: '2 days ago' },
+    {
+      title: 'B',
+      url: 'https://github.com/nish1013/b',
+      pushedLabel: 'yesterday',
+    },
+    {
+      title: 'C',
+      url: 'https://github.com/nish1013/c',
+      pushedLabel: '2 days ago',
+    },
   ]);
 });
 
-test('no recent repos gives no activity line', () => {
+test('no own public repos gives no activity line', () => {
   const work = toRecentWork(
-    [repo({ pushed_at: '2025-01-01T00:00:00Z' })],
+    [repo({ name: 'viem', fork: true }), repo({ name: 'me' })],
     OPTIONS
   );
   assert.deepEqual(work, { repos: [], activity: null });
@@ -189,13 +200,9 @@ test('titles split on dashes and keep AI upper case', () => {
   assert.equal(titleFromName('a--b_c'), 'A B C');
 });
 
-test('activity text names the last push and the repo count', () => {
+test('activity text names the last push', () => {
   assert.equal(
-    activityText({ lastPushLabel: 'today', repoCount: 6, latest: [] }, 30),
-    'Last push today · 6 public repos in the last 30 days'
-  );
-  assert.equal(
-    activityText({ lastPushLabel: '3 days ago', repoCount: 1, latest: [] }, 30),
-    'Last push 3 days ago · 1 public repo in the last 30 days'
+    activityText({ lastPushLabel: '3 days ago', latest: [] }),
+    'Last push 3 days ago'
   );
 });

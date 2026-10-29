@@ -41,7 +41,7 @@ WordPress ──(WPGraphQL)──▶ Gatsby ──▶ static HTML ──▶ brow
 
 ## Recent GitHub work
 
-The home and Work pages list public repositories with a push in the last 30 days.
+The home and Work pages list the 6 most recently pushed public repositories.
 
 - A fixed showcase order and one trade-off line per repository live in `src/components/github/data.ts`.
 - Forks, archived repositories and the excluded names do not show.

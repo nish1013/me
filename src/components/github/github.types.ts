@@ -30,7 +30,6 @@ export interface PushRef {
 
 export interface Activity {
   lastPushLabel: string;
-  repoCount: number;
   latest: PushRef[];
 }
 
@@ -46,7 +45,7 @@ export interface RecentWork {
 
 export interface RecentWorkOptions {
   now: Date;
-  days: number;
+  count: number;
   exclude: string[];
   showcase: ShowcaseEntry[];
 }
