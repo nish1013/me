@@ -14,8 +14,7 @@ export function toRecentWork(
   repos: GitHubRepo[],
   options: RecentWorkOptions
 ): RecentWork {
-  const { now, days, exclude, showcase } = options;
-  const since = now.getTime() - days * DAY_MS;
+  const { now, count, exclude, showcase } = options;
   const excluded = new Set(exclude.map((name) => name.toLowerCase()));
   const rank = new Map(showcase.map((entry, i) => [entry.repo, i]));
   const tradeoffs = new Map(showcase.map((e) => [e.repo, e.tradeoff]));
@@ -23,13 +22,12 @@ export function toRecentWork(
   const byPush = repos
     .filter((r) => !r.fork && !r.archived && !r.private)
     .filter((r) => !excluded.has(r.name.toLowerCase()))
-    .filter((r) => Date.parse(r.pushed_at) >= since)
     .sort((a, b) => Date.parse(b.pushed_at) - Date.parse(a.pushed_at))
+    .slice(0, count)
     .map((r) => toRecentRepo(r, now, tradeoffs.get(r.name)));
 
   const byShowcase = [...byPush].sort(
-    (a, b) =>
-      (rank.get(a.name) ?? Infinity) - (rank.get(b.name) ?? Infinity)
+    (a, b) => (rank.get(a.name) ?? Infinity) - (rank.get(b.name) ?? Infinity)
   );
 
   return {
@@ -37,7 +35,6 @@ export function toRecentWork(
     activity: byPush.length
       ? {
           lastPushLabel: byPush[0].pushedLabel,
-          repoCount: byPush.length,
           latest: byPush.slice(0, LATEST_PUSHES).map((r) => ({
             title: r.title,
             url: r.url,
@@ -48,9 +45,8 @@ export function toRecentWork(
   };
 }
 
-export function activityText(activity: Activity, days: number): string {
-  const repos = activity.repoCount === 1 ? 'repo' : 'repos';
-  return `Last push ${activity.lastPushLabel} · ${activity.repoCount} public ${repos} in the last ${days} days`;
+export function activityText(activity: Activity): string {
+  return `Last push ${activity.lastPushLabel}`;
 }
 
 export function daysAgoLabel(iso: string, now: Date): string {

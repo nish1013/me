@@ -1,5 +1,5 @@
 import React from 'react';
-import { GITHUB_PROFILE_URL, RECENT_DAYS, SHOWCASE } from '../github/data';
+import { GITHUB_PROFILE_URL, SHOWCASE } from '../github/data';
 import { activityText, titleFromName } from '../github/github.util';
 import { useRecentWork } from '../github/useRecentWork';
 
@@ -41,7 +41,7 @@ export default function RecentRepos() {
   return (
     <>
       <p className="text-sm text-slate-500 mb-4">
-        {activityText(state.activity, RECENT_DAYS)}
+        {activityText(state.activity)}
       </p>
       <div className="space-y-3">
         {state.repos.map((r) => (

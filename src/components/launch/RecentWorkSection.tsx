@@ -1,5 +1,5 @@
 import React from 'react';
-import { GITHUB_PROFILE_URL, RECENT_DAYS, SHOWCASE } from '../github/data';
+import { GITHUB_PROFILE_URL, SHOWCASE } from '../github/data';
 import { activityText, titleFromName } from '../github/github.util';
 import type { RecentWorkState } from '../github/github.types';
 import SiteLink from '../code/SiteLink';
@@ -30,9 +30,7 @@ export default function RecentWorkSection({
   return (
     <section className="ln-section" id="recent">
       <p className="ln-eyebrow ln-mono ln-reveal">Recent work</p>
-      <h2 className="ln-h2 ln-display ln-reveal">
-        Built in the last {RECENT_DAYS} days.
-      </h2>
+      <h2 className="ln-h2 ln-display ln-reveal">Built recently.</h2>
 
       {state.status === 'loading' && (
         <div className="ln-skel" aria-busy="true">
@@ -57,7 +55,7 @@ export default function RecentWorkSection({
         <>
           <p className="ln-activity ln-mono">
             <span className="ln-activity-dot" aria-hidden="true" />
-            {activityText(state.activity, RECENT_DAYS)}
+            {activityText(state.activity)}
           </p>
           <div className="ln-grid">
             {state.repos.slice(0, limit).map((r) => (
