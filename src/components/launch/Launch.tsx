@@ -53,8 +53,12 @@ export default function Launch({
               <span>{ticker.repeat(2)}</span>
               <span aria-hidden="true">{ticker.repeat(2)}</span>
             </div>
-            {recent.status === 'ready' && recent.activity && (
+            {recent.status === 'ready' && recent.activity ? (
               <ActivityPill activity={recent.activity} />
+            ) : (
+              <span className="ln-pill ln-pill-slot ln-mono" aria-hidden="true">
+                Active on GitHub
+              </span>
             )}
             <h1 className="ln-h1 ln-display">{name}</h1>
             <p className="ln-intro">{intro}</p>

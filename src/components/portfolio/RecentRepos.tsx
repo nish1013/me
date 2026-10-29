@@ -1,7 +1,19 @@
 import React from 'react';
-import { GITHUB_PROFILE_URL, RECENT_DAYS } from '../github/data';
-import { activityText } from '../github/github.util';
+import { GITHUB_PROFILE_URL, RECENT_DAYS, SHOWCASE } from '../github/data';
+import { activityText, titleFromName } from '../github/github.util';
 import { useRecentWork } from '../github/useRecentWork';
+
+const SKELETON_TOPICS = [
+  'domain-driven-design',
+  'event-driven',
+  'fastapi',
+  'postgresql',
+  'python',
+  'docker',
+  'evals',
+  'ai-agent',
+  'typescript',
+];
 
 const LINK =
   'text-slate-600 hover:text-slate-900 underline-offset-2 hover:underline';
@@ -10,7 +22,7 @@ export default function RecentRepos() {
   const state = useRecentWork();
 
   if (state.status === 'loading') {
-    return <p className="text-sm text-slate-500">Loading from GitHub…</p>;
+    return <RecentReposSkeleton />;
   }
 
   if (state.status === 'error' || !state.activity) {
@@ -87,5 +99,42 @@ export default function RecentRepos() {
         ))}
       </div>
     </>
+  );
+}
+
+// Showcase text gives the skeleton the height of the real list, so Live demos does not jump when it arrives.
+function RecentReposSkeleton() {
+  return (
+    <div aria-busy="true">
+      <p className="text-sm text-slate-500 mb-4">Loading from GitHub…</p>
+      <div
+        className="space-y-3 animate-pulse text-transparent"
+        aria-hidden="true"
+      >
+        {SHOWCASE.map((entry) => (
+          <div
+            key={entry.repo}
+            className="border border-slate-200 px-6 py-4 rounded-lg"
+          >
+            <h3 className="text-sm font-medium">{titleFromName(entry.repo)}</h3>
+            <p className="text-xs mt-1">
+              {entry.tradeoff} {entry.tradeoff}
+            </p>
+            <p className="text-sm mt-2">Trade-off: {entry.tradeoff}</p>
+            <div className="flex flex-wrap gap-1.5 mt-3">
+              {SKELETON_TOPICS.map((t) => (
+                <span
+                  key={t}
+                  className="text-xs bg-slate-100 rounded px-1.5 py-0.5"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+            <div className="mt-3 text-xs">Code ↗</div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
-import { GITHUB_PROFILE_URL, RECENT_DAYS } from '../github/data';
-import { activityText } from '../github/github.util';
+import { GITHUB_PROFILE_URL, RECENT_DAYS, SHOWCASE } from '../github/data';
+import { activityText, titleFromName } from '../github/github.util';
 import type { RecentWorkState } from '../github/github.types';
 import SiteLink from '../code/SiteLink';
 
@@ -9,6 +9,17 @@ interface RecentWorkSectionProps {
   limit: number;
   allUrl: string;
 }
+
+interface SkeletonCardsProps {
+  count: number;
+}
+
+const SKELETON_TOPICS = [
+  'domain-driven-design',
+  'event-driven',
+  'fastapi',
+  'evals',
+];
 
 // Cards arrive after mount, so they skip ln-reveal: useReveal only observes nodes present at mount.
 export default function RecentWorkSection({
@@ -24,7 +35,16 @@ export default function RecentWorkSection({
       </h2>
 
       {state.status === 'loading' && (
-        <p className="ln-activity ln-mono">Loading from GitHub…</p>
+        <div className="ln-skel" aria-busy="true">
+          <p className="ln-activity ln-mono">
+            <span className="ln-activity-dot" aria-hidden="true" />
+            Loading from GitHub…
+          </p>
+          <SkeletonCards count={limit} />
+          <span className="ln-all ln-mono" aria-hidden="true">
+            All recent work →
+          </span>
+        </div>
       )}
 
       {state.status === 'error' && (
@@ -78,5 +98,30 @@ export default function RecentWorkSection({
         </SiteLink>
       )}
     </section>
+  );
+}
+
+// Showcase text gives the skeleton the height of the real cards, so content below does not jump when they arrive.
+function SkeletonCards({ count }: SkeletonCardsProps) {
+  return (
+    <div className="ln-grid" aria-hidden="true">
+      {SHOWCASE.slice(0, count).map((entry) => (
+        <div key={entry.repo} className="ln-card">
+          <span className="ln-card-n ln-mono">pushed 7 days ago</span>
+          <h3 className="ln-display">{titleFromName(entry.repo)}</h3>
+          <p>{entry.tradeoff}</p>
+          <span className="ln-card-langs ln-mono">
+            {SKELETON_TOPICS.map((t) => (
+              <span key={t} className="ln-tone-other">
+                {t}
+              </span>
+            ))}
+          </span>
+          <span className="ln-card-url ln-mono">
+            github.com/nish1013/{entry.repo} ↗
+          </span>
+        </div>
+      ))}
+    </div>
   );
 }
