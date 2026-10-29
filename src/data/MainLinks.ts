@@ -4,8 +4,8 @@ export interface MainLink {
 }
 
 export const navLinks: MainLink[] = [
+  { url: '/portfolio', text: 'Work' },
   { url: '/about', text: 'About' },
-  { url: '/portfolio', text: 'Playground' },
   { url: '/blog', text: 'Blog' },
   { url: '/certifications', text: 'Certifications' },
   { url: '/podcasts', text: 'Podcasts' },

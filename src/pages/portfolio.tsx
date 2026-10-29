@@ -13,4 +13,4 @@ const PortfolioPage: React.FC<PageProps> = () => {
 
 export default PortfolioPage;
 
-export const Head: HeadFC = () => <title>Playground | Nish</title>;
+export const Head: HeadFC = () => <title>Work | Nish</title>;

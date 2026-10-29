@@ -461,6 +461,66 @@
   margin: 0 0 28px;
 }
 
+.ln-activity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: -12px 0 22px;
+  font-size: 13px;
+  color: var(--ln-muted);
+}
+.ln-activity-dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 4px rgb(34 197 94 / 0.18);
+  animation: ln-pulse 2s ease-in-out infinite;
+}
+@keyframes ln-pulse {
+  50% {
+    box-shadow: 0 0 0 7px rgb(34 197 94 / 0);
+  }
+}
+.ln-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 14px;
+  padding: 7px 14px;
+  border: 1px solid var(--ln-line);
+  border-radius: 99px;
+  background: var(--ln-chip);
+  font-size: 12px;
+  color: var(--ln-muted);
+  animation: ln-fade 0.5s ease;
+}
+.ln-pill:hover {
+  color: var(--ln-ink);
+}
+.ln-pill-sep {
+  opacity: 0.6;
+}
+.ln-pill-push {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--ln-ink);
+  animation: ln-fade 0.5s ease;
+}
+@keyframes ln-fade {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+.ln-card p.ln-card-trade {
+  color: var(--ln-ink);
+}
+
 /* stack */
 .ln-lang-tiles {
   display: grid;
