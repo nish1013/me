@@ -59,6 +59,14 @@ export const PORTFOLIO: PortfolioModel[] = [
     icon: '🎟️',
   },
   {
+    title: 'Childminders Register',
+    hint: 'Signs children in and out in one tap',
+    uri: 'https://childminders.satharasinghe.com/',
+    languages: ['TypeScript'],
+    tech: ['React', 'Node.js', 'Express', 'PGlite'],
+    icon: '🧸',
+  },
+  {
     title: 'Web3 Wallet',
     hint: 'Checks a blockchain wallet balance',
     uri: 'https://wallet.satharasinghe.com/',
