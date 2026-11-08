@@ -19,6 +19,15 @@ export const PORTFOLIO: PortfolioModel[] = [
     icon: '🤖',
   },
   {
+    title: 'Promptype',
+    hint: 'Touch typing for prompt writers',
+    uri: 'https://promptype.satharasinghe.com/',
+    features: ['AI drills'],
+    languages: ['TypeScript'],
+    tech: ['Next.js', 'LLM', 'PostgreSQL'],
+    icon: '⌨️',
+  },
+  {
     title: 'Risk Engine',
     hint: 'Flags risky financial activity',
     uri: 'https://riskengine.satharasinghe.com/',
