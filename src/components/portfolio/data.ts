@@ -20,10 +20,11 @@ export const PORTFOLIO: PortfolioModel[] = [
   },
   {
     title: 'AI Signal',
-    hint: 'Daily engineering posts from AI labs',
+    hint: 'Engineering blogs and AI lab news, daily',
     uri: 'https://signal.satharasinghe.com/',
+    features: ['RSS', 'Daily cron'],
     languages: ['TypeScript'],
-    tech: ['Next.js'],
+    tech: ['Next.js', 'React', 'Tailwind CSS', 'Vercel'],
     icon: '📡',
   },
   {
