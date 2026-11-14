@@ -28,6 +28,15 @@ export const PORTFOLIO: PortfolioModel[] = [
     icon: '📡',
   },
   {
+    title: 'HireCheck',
+    hint: 'Compares hire photos before and after',
+    uri: 'https://hirecheck.satharasinghe.com/',
+    features: ['AI vision'],
+    languages: ['TypeScript'],
+    tech: ['Next.js', 'React', 'PostgreSQL', 'Railway'],
+    icon: '📸',
+  },
+  {
     title: 'Promptype',
     hint: 'Touch typing for prompt writers',
     uri: 'https://promptype.satharasinghe.com/',
