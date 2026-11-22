@@ -28,6 +28,15 @@ export const PORTFOLIO: PortfolioModel[] = [
     icon: '📡',
   },
   {
+    title: 'Homebuyer',
+    hint: 'The full cost of a home, before you offer',
+    uri: 'https://homebuyer.satharasinghe.com/',
+    features: ['Open data', 'AI verdict by invite'],
+    languages: ['Python', 'TypeScript'],
+    tech: ['FastAPI', 'PostgreSQL', 'React', 'Vite', 'Railway'],
+    icon: '🏠',
+  },
+  {
     title: 'HireCheck',
     hint: 'Compares hire photos before and after',
     uri: 'https://hirecheck.satharasinghe.com/',
