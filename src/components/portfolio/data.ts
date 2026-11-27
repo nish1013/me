@@ -28,6 +28,15 @@ export const PORTFOLIO: PortfolioModel[] = [
     icon: '📡',
   },
   {
+    title: 'EICR Code Check',
+    hint: 'Checks the codes on your EICR against the guide',
+    uri: 'https://eicr.satharasinghe.com/',
+    features: ['AI matching', 'PDF import', '1 free report'],
+    languages: ['Python', 'TypeScript'],
+    tech: ['FastAPI', 'PostgreSQL', 'LLM (Anthropic)', 'Vite', 'Railway'],
+    icon: '⚡',
+  },
+  {
     title: 'Homebuyer',
     hint: 'The full cost of a home, before you offer',
     uri: 'https://homebuyer.satharasinghe.com/',
